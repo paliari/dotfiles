@@ -1,5 +1,5 @@
 # shell
-alias ls="ls -GF"
+alias ls="ls -GF --color"
 alias l="ls -lah"
 alias ll="ls -l"
 alias mkp="mkdir -p"

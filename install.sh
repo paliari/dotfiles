@@ -27,3 +27,5 @@ git config --global core.excludesfile ~/.gitignore
 echo "downloading vcprompt"
 curl -sL https://github.com/djl/vcprompt/raw/master/bin/vcprompt > ~/dotfiles/bin/vcprompt
 chmod 755 ~/dotfiles/bin/vcprompt
+
+echo "echo '. ~/dotfiles/bashrc' >> ~/.bashrc"

@@ -1,3 +1,4 @@
+alias reload-bashrc="source ~/.bashrc"
 # mostra os 10 processos ordenados pela utilização de memória (em MB)
 alias pstop="ps -Ao rss,comm --sort=rss | awk '{printf \"%.0f %s\n\", \$1/1024, \$2}' | tail"
 alias psvtop="ps -Ao vsz,comm --sort=vsz | awk '{printf \"%.0f %s\n\", \$1/1024, \$2}' | uniq -f1 | tail"
@@ -27,3 +28,8 @@ wdata() { chown -R www-data:www-data $1; }
 
 # return a random password
 mkpw() { head /dev/urandom | uuencode -m - | sed -n 2p | cut -c1-${1:-8}; }
+
+gspush() { curl -s --form key='${filename}' --form file=@$1 http://w3b.commondatastorage.googleapis.com; }
+gspop() { wget -O $1 http://w3b.commondatastorage.googleapis.com/$1; }
+gsdel() { curl -s -X DELETE http://w3b.commondatastorage.googleapis.com/$1; }
+gslist() { curl -s http://w3b.commondatastorage.googleapis.com | grep '<Key>[^<]*</Key>' -o | sed 's/<\/*Key>//g'; }

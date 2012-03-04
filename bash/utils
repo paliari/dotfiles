@@ -17,8 +17,9 @@ go() { 8g $1.go && 8l -o $1.bin $1.8 && rm $1.8 && ./$1.bin; }
 # tar+bz2 a folder
 tbz() { tar -c $1 | bzip2 -k9c > $1.tar.bz2; l $1.tar.bz2; }
 
-# print formatted xml
-alias xml="tidy -indent -quiet -xml -raw"
+# pretty print xml and json
+alias xmlp="tidy -indent -quiet -xml -raw"
+alias jsonp="python -mjson.tool"
 
 # ajuda descobrir onde esta determinado executavel e ja exibe dados sobre ele
 lw() { l $(which $1); }

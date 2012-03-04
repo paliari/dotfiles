@@ -1,6 +1,11 @@
 #!/bin/sh
-DOTFILES=$(cd `dirname $0` && pwd)
-ln -sf $DOTFILES ~/dotfiles
+if [ ! -e ~/dotfiles ]
+then
+  DOTFILES=$(cd `dirname $0` && pwd)
+  ln -sf $DOTFILES ~/dotfiles
+else
+  echo "~/dotfiles already exists"
+fi
 
 for f in gemrc gitconfig gitignore
 do

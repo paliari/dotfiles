@@ -13,14 +13,10 @@ do
   ln -sf $HOME/dotfiles/$f $HOME/.$f
 done
 
-for f in ssh/authorized_keys
-do
-  echo "coping $f"
-  cp $HOME/dotfiles/$f $HOME/.$f
-done
-
-echo "chmod .ssh"
+echo "config .ssh"
+mkdir -p ~/.ssh
 chmod 700 ~/.ssh
+cp ~/dotfiles/ssh/authorized_keys ~/.ssh/authorized_keys
 chmod 600 ~/.ssh/*
 
 # https://github.com/github/gitignore

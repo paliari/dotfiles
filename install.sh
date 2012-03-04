@@ -7,7 +7,7 @@ else
   echo "~/dotfiles already exists"
 fi
 
-for f in gemrc gitconfig gitignore
+for f in gemrc gitconfig gitignore vim vimrc
 do
   echo "linking $f"
   ln -sf $HOME/dotfiles/$f $HOME/.$f

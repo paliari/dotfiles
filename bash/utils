@@ -1,0 +1,29 @@
+# mostra os 10 processos ordenados pela utilização de memória (em MB)
+alias pstop="ps -Ao rss,comm --sort=rss | awk '{printf \"%.0f %s\n\", \$1/1024, \$2}' | tail"
+alias psvtop="ps -Ao vsz,comm --sort=vsz | awk '{printf \"%.0f %s\n\", \$1/1024, \$2}' | uniq -f1 | tail"
+
+# sum memory usage
+alias sumrss="ps -e --format rss --no-heading | awk '{tot=tot+\$1} END {print tot}'"
+alias sumvsz="ps -e --format vsz --no-heading | awk '{tot=tot+\$1} END {print tot}'"
+sumall() {
+  echo RSS: `sumrss`
+  echo VSZ: `sumvsz`	
+}
+
+# compile and run a .go file
+go() { 8g $1.go && 8l -o $1.bin $1.8 && rm $1.8 && ./$1.bin; }
+
+# tar+bz2 a folder
+tbz() { tar -c $1 | bzip2 -k9c > $1.tar.bz2; l $1.tar.bz2; }
+
+# print formatted xml
+alias xml="tidy -indent -quiet -xml -raw"
+
+# ajuda descobrir onde esta determinado executavel e ja exibe dados sobre ele
+lw() { l $(which $1); }
+
+# change recursively the owner to www-data
+wdata() { chown -R www-data:www-data $1; }
+
+# return a random password
+mkpw() { head /dev/urandom | uuencode -m - | sed -n 2p | cut -c1-${1:-8}; }

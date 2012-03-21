@@ -47,7 +47,13 @@ _temp() {
     local a=$BLUE
     local A=$MAGENTA
     local I=$WHITE
-    PS1="\n$(uname):$U\u$D#$W\w $G\$(vcprompt --format-git '($m%m$b%b$u%u$a%a$G) ')${A}\n→$I "
+
+    __DIR__() {
+      basename -a "$(dirname "$PWD")"
+    }
+
+    PS1="\n$(uname):$U\u$D#$W\w $G\$(vcprompt --format-git '($m%m$b%b$u%u$a%a$G) ')\n$a\$(__DIR__)/\$(basename \"\$PWD\")$A →$I "
 }
 _temp
-unset _temp
+
+unset -f _temp

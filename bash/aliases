@@ -11,3 +11,4 @@ alias grep="grep -i"
 alias gits="git status"
 alias gitc="git commit -a -m "
 alias gita="git add . && gits"
+gitacp() { git add . && git status && git commit -a -m "gitacp $1" && git push; }

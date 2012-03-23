@@ -49,7 +49,7 @@ _temp() {
     local I=$WHITE
 
     __DIR__() {
-      basename -a "$(dirname "$PWD")"
+      basename "$(dirname "$PWD")"
     }
 
     PS1="\n$(uname):$U\u$D#$W\w $G\$(vcprompt --format-git '($m%m$b%b$u%u$a%a$G) ')\n$a\$(__DIR__)/\$(basename \"\$PWD\")$A →$I "

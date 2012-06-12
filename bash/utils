@@ -47,3 +47,8 @@ gspush() { curl -s --form key='${filename}' --form file=@$1 http://w3b.commondat
 gspop() { wget -O $1 http://w3b.commondatastorage.googleapis.com/$1; }
 gsdel() { curl -s -X DELETE http://w3b.commondatastorage.googleapis.com/$1; }
 gslist() { curl -s http://w3b.commondatastorage.googleapis.com | grep '<Key>[^<]*</Key>' -o | sed 's/<\/*Key>//g'; }
+
+alias localhost="php -S 127.0.0.1:8081 -t ."
+alias iso2utf8="iconv -f iso-8859-1 -t utf8"
+alias sumlines="awk '{sum+=\$1} END{printf(\"%d\n\",sum)}'"
+alias fsize="stat -f %z"

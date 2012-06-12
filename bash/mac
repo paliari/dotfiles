@@ -1,0 +1,11 @@
+iso2img() {
+  name=$(basename $1 .iso)
+  hdiutil convert $1 -format UDRW -o $name;
+  mv $name.dmg $name.img
+}
+
+img2iso() {
+  name=$(basename $1 .img)
+  hdiutil convert $1 -format UDTO -o $name;
+  mv $name.cdr $name.iso
+}

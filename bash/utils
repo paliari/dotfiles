@@ -52,3 +52,10 @@ alias localhost="php -S 127.0.0.1:8081 -t ."
 alias iso2utf8="iconv -f iso-8859-1 -t utf8"
 alias sumlines="awk '{sum+=\$1} END{printf(\"%d\n\",sum)}'"
 alias fsize="stat -f %z"
+
+# benchmark disk speed
+iobench() {
+  bs=${1-16k}
+  count=${2-16k}
+  dd if=/dev/zero of=iobench.tmp bs=$bs count=$count conv=fdatasync && rm iobench.tmp;
+}

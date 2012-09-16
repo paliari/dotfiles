@@ -3,8 +3,8 @@ if [ -e /etc/debian_version ]
 then
   export LS_OPTIONS='--color=auto'
 fi
-
-. ~/dotfiles/bash/env
-. ~/dotfiles/bash/aliases
-. ~/dotfiles/bash/prompt
-. ~/dotfiles/bash/utils
+export DOTDIR=$HOME/.dotfiles
+. $DOTDIR/bash/env
+. $DOTDIR/bash/aliases
+. $DOTDIR/bash/prompt
+. $DOTDIR/bash/utils

@@ -48,7 +48,7 @@ gspop() { wget -O $1 http://w3b.commondatastorage.googleapis.com/$1; }
 gsdel() { curl -s -X DELETE http://w3b.commondatastorage.googleapis.com/$1; }
 gslist() { curl -s http://w3b.commondatastorage.googleapis.com | grep '<Key>[^<]*</Key>' -o | sed 's/<\/*Key>//g'; }
 
-alias localhost="php -S 127.0.0.1:8081 -t ."
+alias localhost="php -S 0.0.0.0:8081 -t ."
 alias iso2utf8="iconv -f iso-8859-1 -t utf8"
 alias sumlines="awk '{sum+=\$1} END{printf(\"%d\n\",sum)}'"
 alias fsize="stat -f %z"
@@ -58,4 +58,14 @@ iobench() {
   bs=${1-16k}
   count=${2-16k}
   dd if=/dev/zero of=iobench.tmp bs=$bs count=$count conv=fdatasync && rm iobench.tmp;
+}
+
+# logo apos executar cp /path/a path/b, executar cpback /path/a /path/b para copiar ao contrario
+cpback() { cp $2 $1; }
+
+rename() {
+  DIR=$(dirname $1)
+  NEW=$DIR/$2
+  mv $1 $NEW;
+  ls -la $NEW
 }

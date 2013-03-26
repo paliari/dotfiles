@@ -9,3 +9,9 @@ img2iso() {
   hdiutil convert $1 -format UDTO -o $name;
   mv $name.cdr $name.iso
 }
+
+alias linkqi="hardlink /Users/neves/Documents/github/qi/lib/Qi Qi"
+
+alias ip="ifconfig | grep -o 192.168.*n"
+
+alias ipdsl="curl http://host64.appspot.com/ip"

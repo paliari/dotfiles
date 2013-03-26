@@ -15,3 +15,7 @@ alias linkqi="hardlink /Users/neves/Documents/github/qi/lib/Qi Qi"
 alias ip="ifconfig | grep -o 192.168.*n"
 
 alias ipdsl="curl http://host64.appspot.com/ip"
+
+alias qi="hardlink /Users/neves/Dropbox/github/qi/lib/Qi Qi"
+
+export EDITOR="/usr/local/bin/mate -w"

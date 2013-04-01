@@ -52,19 +52,6 @@ alias iso2utf8="iconv -f iso-8859-1 -t utf8"
 alias sumlines="awk '{sum+=\$1} END{printf(\"%d\n\",sum)}'"
 alias fsize="stat -f %z"
 
-localhost() {
-  port=8081
-  if [ -e cli-server.php ]
-  then
-    cmd=cli-server.php
-  else
-    cmd="-t ."
-  fi
-  line="-S 0.0.0.0:$port $cmd"
-  echo "php $line"
-  php $line
-}
-
 # benchmark disk speed
 iobench() {
   bs=${1-16k}

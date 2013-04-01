@@ -19,3 +19,16 @@ alias ipdsl="curl http://host64.appspot.com/ip"
 alias qi="hardlink /Users/neves/Dropbox/github/qi/lib/Qi Qi"
 
 export EDITOR="/usr/local/bin/mate -w"
+
+localhost() {
+  port=8081
+  if [ -e cli-server.php ]
+  then
+    cmd=cli-server.php
+  else
+    cmd="-t ."
+  fi
+  line="-S 0.0.0.0:$port $cmd"
+  echo "php54 $line"
+  php54 $line
+}

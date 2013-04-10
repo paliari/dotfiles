@@ -26,9 +26,20 @@
   autosetupmerge = true
 [core]
 	excludesfile = /Users/neves/.gitignore
-[difftool "sourcetree"]
+	editor = mate -w
+
+[difftool "opendiff"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+[mergetool "opendiff"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+
+[diff]
+    tool = opendiff
+
+[mergetool]
+    keepBackup = false
+
+[merge]
+    tool = opendiff

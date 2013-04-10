@@ -69,5 +69,6 @@ rename() {
   ls -la $NEW
 }
 
-# copy $2 over $1
-cpreverse() { cp $2 $1; }
+alias coffee-watch="coffee -c -b -w ."
+
+alias png2jpg="mogrify -format jpg *.png"

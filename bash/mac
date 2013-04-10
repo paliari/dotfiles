@@ -1,3 +1,9 @@
+alias reload-bashrc="source ~/.bash_profile"
+
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+fi
+  
 iso2img() {
   name=$(basename $1 .iso)
   hdiutil convert $1 -format UDRW -o $name;
@@ -32,3 +38,6 @@ localhost() {
   echo "php54 $line"
   php54 $line
 }
+
+alias mongod-start="launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist"
+alias mongod-stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist"

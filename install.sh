@@ -24,9 +24,14 @@ chmod 600 ~/.ssh/*
 echo "global .gitignore"
 git config --global core.excludesfile ~/.gitignore
 
+download_bin() {
+	echo "downloading $1"
+	curl -sL $2 > $DOTDIR/bin/$1
+	chmod 755 $DOTDIR/bin/$1	
+}
+
 # https://github.com/djl/vcprompt
-echo "downloading vcprompt"
-curl -sL https://github.com/djl/vcprompt/raw/master/bin/vcprompt > $DOTDIR/bin/vcprompt
-chmod 755 $DOTDIR/bin/vcprompt
+download_bin vcprompt "https://github.com/djl/vcprompt/raw/master/bin/vcprompt"
+download_bin dropbox.py "https://www.dropbox.com/download?dl=packages/dropbox.py"
 
 echo "echo '. $DOTDIR/bashrc' >> ~/.bashrc"

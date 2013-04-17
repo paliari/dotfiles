@@ -56,7 +56,12 @@ alias fsize="stat -f %z"
 iobench() {
   bs=${1-16k}
   count=${2-16k}
-  dd if=/dev/zero of=iobench.tmp bs=$bs count=$count conv=fdatasync && rm iobench.tmp;
+  conv=sync
+  if [ -e /etc/debian_version ]
+  then
+  conv=fdata$conv
+  fi
+  dd if=/dev/zero of=iobench.tmp bs=$bs count=$count conv=$conv && rm iobench.tmp;
 }
 
 # logo apos executar cp /path/a path/b, executar cpback /path/a /path/b para copiar ao contrario

@@ -13,4 +13,9 @@ export DOTDIR=$HOME/.dotfiles
 unamestr=`uname`
 if [[ "$unamestr" == 'Darwin' ]]; then
 	. $DOTDIR/bash/mac
+	# brew install bash-completion
+	if [ -f $(brew --prefix)/etc/bash_completion ]; then
+		. $(brew --prefix)/etc/bash_completion
+	fi
+	. $DOTDIR/bash/git-completion.bash
 fi

@@ -43,3 +43,6 @@
 
 [merge]
     tool = opendiff
+
+[alias]
+	amend = commit --amend -a -m

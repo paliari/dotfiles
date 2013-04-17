@@ -57,6 +57,8 @@ _temp() {
 	# PS1="\n$(uname):$U\u$D#$W\w $G\$(vcprompt --format-git '($m%m$b%b$u%u$a%a$G) ')\n$a\$(__DIR__)/\$(basename \"\$PWD\")$A>$I"
 	
 	export GIT_PS1_SHOWDIRTYSTATE=1
+	export GIT_PS1_SHOWUNTRACKEDFILES=1
+	export GIT_PS1_SHOWUPSTREAM="verbose"
 	PS1="\n$(uname):$U\u$D#$W\w $G\$(__git_ps1 '(%s)')\n$a\$(__DIR__)/\$(basename \"\$PWD\")$A>$I"
 }
 _temp

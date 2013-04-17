@@ -31,7 +31,7 @@ download_bin() {
 }
 
 # https://github.com/djl/vcprompt
-download_bin vcprompt "https://github.com/djl/vcprompt/raw/master/bin/vcprompt"
-download_bin dropbox.py "https://www.dropbox.com/download?dl=packages/dropbox.py"
+#download_bin vcprompt "https://github.com/djl/vcprompt/raw/master/bin/vcprompt"
+#download_bin dropbox.py "https://www.dropbox.com/download?dl=packages/dropbox.py"
 
 echo "echo '. $DOTDIR/bashrc' >> ~/.bashrc"

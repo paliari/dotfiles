@@ -25,7 +25,7 @@
 [branch]
   autosetupmerge = true
 [core]
-	excludesfile = /Users/neves/.gitignore
+	excludesfile = ~/.gitignore
 	editor = mate -w
 
 [difftool "opendiff"]

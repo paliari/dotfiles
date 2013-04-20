@@ -28,8 +28,6 @@ localhost() {
 # default mac path: /usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 # add mysql to path
 [[ -d "/usr/local/mysql/bin" ]] && export PATH="/usr/local/mysql/bin:$PATH"
-# add rvm to path
-[[ -d "$HOME/.rvm/bin" ]] && export PATH="$HOME/.rvm/bin:$PATH"
 # add heroku to path
 [[ -d "/usr/local/heroku/bin" ]] && export PATH="/usr/local/heroku/bin:$PATH"
 # add php53 to path
@@ -45,8 +43,6 @@ fi
 
 # @TODO try .bashrc and .profile
 alias reload-bashrc="source ~/.bash_profile"
-
-alias linkqi="hardlink /Users/neves/Documents/github/qi/lib/Qi Qi"
 
 alias ip="ifconfig | grep -o 192.168.*n"
 

@@ -6,6 +6,3 @@ export GREP_COLOR="4;33"
 export CLICOLOR="auto"
 
 export TZ='America/Sao_Paulo'
-export LANG=en_US.UTF-8
-export LANGUAGE=C
-export LC_ALL=C

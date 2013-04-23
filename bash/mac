@@ -25,7 +25,9 @@ localhost() {
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
-# default mac path: /usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
+# change default mac path: /usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
+# to put /usr/local/bin before the others
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # add mysql to path
 [[ -d "/usr/local/mysql/bin" ]] && export PATH="/usr/local/mysql/bin:$PATH"
 # add heroku to path

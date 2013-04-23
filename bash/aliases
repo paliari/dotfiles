@@ -1,5 +1,5 @@
 # shell
-alias ls="ls -GF $LS_OPTIONS"
+alias ls="ls -GFv $LS_OPTIONS"
 alias l="ls -lah"
 alias ll="ls -l"
 alias mkp="mkdir -p"
@@ -9,6 +9,6 @@ alias grep="grep -i"
 
 # git
 alias gits="git status"
-alias gitc="git commit -a -m "
+alias gitc="git commit -m "
 alias gita="git add . && gits"
 gitacp() { gita && gitc "gitacp $1" && git push $2; }

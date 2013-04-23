@@ -16,7 +16,7 @@
   changed = green
   untracked = cyan
 [user]
-  email = marcos.neves@gmail.com
+	email = marcos.neves@gmail.com
 	name = Marcos Neves
 [github]
     user = neves
@@ -31,18 +31,22 @@
 [difftool "opendiff"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
+
 [mergetool "opendiff"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
-
-[diff]
-    tool = opendiff
-
-[mergetool]
     keepBackup = false
 
+[mergetool "diffmerge"]
+	cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
+	trustExitCode = true
+    keepBackup = false
+
+[diff]
+	tool = Kaleidoscope
+
 [merge]
-    tool = opendiff
+	tool = Kaleidoscope
 
 [alias]
 	dev = checkout develop
@@ -57,3 +61,12 @@
 ;http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
 ;https://github.com/evbogue/git-aliases/blob/master/bash_aliases
 ;https://github.com/michel-kraemer/gitaliases/blob/master/gitaliases.sh
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
+[mergetool]
+	prompt = false

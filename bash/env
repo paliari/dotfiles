@@ -1,8 +1,0 @@
-export EDITOR="mate -w"
-export PATH=$DOTDIR/bin:$PATH
-
-export GREP_OPTIONS="--color=auto"
-export GREP_COLOR="4;33"
-export CLICOLOR="auto"
-
-export TZ='America/Sao_Paulo'

@@ -23,26 +23,6 @@ localhost() {
   php54 $line
 }
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
-# change default mac path: /usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
-# to put /usr/local/bin before the others
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-# add mysql to path
-[[ -d "/usr/local/mysql/bin" ]] && export PATH="/usr/local/mysql/bin:$PATH"
-# add heroku to path
-[[ -d "/usr/local/heroku/bin" ]] && export PATH="/usr/local/heroku/bin:$PATH"
-# add php53 to path
-[[ -d "$(brew --prefix php53)/bin" ]] && export PATH="$(brew --prefix php53)/bin:$PATH"
-
-export EDITOR="/usr/local/bin/mate -w"
-
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
-fi
-
-. $DOTDIR/bash/git-completion.bash
-
 # @TODO try .bashrc and .profile
 alias reload-bashrc="source ~/.bash_profile"
 

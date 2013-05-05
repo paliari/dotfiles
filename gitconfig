@@ -68,7 +68,7 @@
 [alias]
 	dev = checkout develop
 	master = checkout master
-	amend = commit --amend -a
+	amend = commit --amend --no-edit
 	todo = grep --line-number --word-regexp @TODO
 	ls = log --all --date=short --format=format:'%C(bold yellow)%h %C(bold green)%ad %C(reset)%s %C(bold blue)[%an]%C(bold red)%d' --graph
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative

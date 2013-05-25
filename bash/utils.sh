@@ -58,6 +58,10 @@ gspop() { wget -O $1 http://w3b.commondatastorage.googleapis.com/$1; }
 gsdel() { curl -s -X DELETE http://w3b.commondatastorage.googleapis.com/$1; }
 gslist() { curl -s http://w3b.commondatastorage.googleapis.com | grep '<Key>[^<]*</Key>' -o | sed 's/<\/*Key>//g'; }
 
+findBySize() {
+    find $1 -type f -size $2 -exec ls -lh {} \; | awk '{ print $5 "\t" $9 }'
+}
+
 alias reload-bashrc="source ~/.bashrc"
 # mostra os 10 processos ordenados pela utilização de memória (em MB)
 alias pstop="ps -Ao rss,comm --sort=rss | awk '{printf \"%.0f %s\n\", \$1/1024, \$2}' | tail"

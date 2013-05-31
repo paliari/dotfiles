@@ -79,3 +79,5 @@
 ;http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
 ;https://github.com/evbogue/git-aliases/blob/master/bash_aliases
 ;https://github.com/michel-kraemer/gitaliases/blob/master/gitaliases.sh
+[push]
+	default = matching

@@ -59,7 +59,7 @@ _temp() {
 	export GIT_PS1_SHOWDIRTYSTATE=1
 	export GIT_PS1_SHOWUNTRACKEDFILES=1
 	export GIT_PS1_SHOWUPSTREAM="verbose"
-	PS1="\n$(uname):$U\u$D#$W\w $G\$(__git_ps1 '(%s)')\n$a\$(__DIR__)/\$(basename \"\$PWD\")$A>$I"
+	PS1="\n$(uname -ns):$U\u$D#$W\w $G\$(__git_ps1 '(%s)')\n$a\$(__DIR__)/\$(basename \"\$PWD\")$A>$I"
 }
 _temp
 

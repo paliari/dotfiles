@@ -60,10 +60,10 @@
     keepBackup = false
 
 [diff]
-	tool = Kaleidoscope
+	tool = opendiff
 
 [merge]
-	tool = Kaleidoscope
+	tool = opendiff
 
 [alias]
 	dev = checkout develop

@@ -30,7 +30,8 @@ alias ip="ifconfig | grep -o 192.168.*n"
 
 alias ipdsl="curl http://host64.appspot.com/ip"
 
-alias qi="hardlink /Users/neves/Dropbox/github/qi/lib/Qi Qi"
+# nao precisa mais
+#alias qi="hardlink /Users/neves/Dropbox/github/qi/lib/Qi Qi"
 
 alias mongod-start="launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist"
 alias mongod-stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist"

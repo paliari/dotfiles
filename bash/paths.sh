@@ -1,7 +1,3 @@
-# change default mac path: /usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
-# to put /usr/local/bin before the others
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-
 # add .dotfiles bin
 export PATH="$DOTDIR/bin:$PATH"
 

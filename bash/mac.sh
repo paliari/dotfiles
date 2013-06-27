@@ -23,6 +23,10 @@ localhost() {
   php54 $line
 }
 
+# change default mac path: /usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
+# to put /usr/local/bin before the others
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+
 # @TODO try .bashrc and .profile
 alias reload-bashrc="source ~/.bash_profile"
 

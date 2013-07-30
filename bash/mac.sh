@@ -19,9 +19,13 @@ localhost() {
     cmd="-t ."
   fi
   line="-S 0.0.0.0:$port $cmd"
-  echo "php54 $line"
-  php54 $line
+  php54="$(brew --prefix php54)/bin/php -n"
+  echo "$php54 $line"
+  $php54 $line
 }
+
+alias php54="$(brew --prefix php54)/bin/php -n"
+alias php55="$(brew --prefix php55)/bin/php -n"
 
 # change default mac path: /usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 # to put /usr/local/bin before the others

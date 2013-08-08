@@ -44,6 +44,8 @@ alias ipdsl="curl http://host64.appspot.com/ip"
 alias mongod-start="launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist"
 alias mongod-stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist"
 
+alias mac-resolution="system_profiler SPDisplaysDataType | grep Resolution"
+
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     source $(brew --prefix)/etc/bash_completion
 fi

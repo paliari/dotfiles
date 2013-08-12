@@ -1,5 +1,13 @@
 # shell
-alias ls="ls -GFv $LS_OPTIONS"
+
+which gls &>/dev/null
+if [ $? -eq 0 ]
+then
+	alias ls="gls -GFvp $LS_OPTIONS --group-directories-first --color"
+else
+	alias ls="ls -GFv $LS_OPTIONS"
+fi
+
 alias l="ls -lah"
 alias ll="ls -l"
 alias mkp="mkdir -p"

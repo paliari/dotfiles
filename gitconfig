@@ -66,6 +66,8 @@
 	tool = opendiff
 
 [alias]
+	d = diff --diff-filter=M --no-prefix --unified=1
+	ds = diff --stat
 	dev = checkout develop
 	master = checkout master
 	amend = commit --amend --no-edit

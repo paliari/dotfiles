@@ -11,7 +11,8 @@ export PATH="$DOTDIR/bin:$PATH"
 [[ -f "$(brew --prefix php53 2>/dev/null)/bin/php" ]] && export PATH="$(brew --prefix php53)/bin:$PATH"
 
 # add android SDK
-[[ -d "$HOME/android/sdk/tools" ]] && export PATH="$HOME/android/sdk/tools:$PATH"
+[[ -d "$HOME/android/sdk/tools" ]] 			&& export PATH="$HOME/android/sdk/tools:$PATH"
+[[ -d "$HOME/android/sdk/platform-tools" ]] && export PATH="$HOME/android/sdk/platform-tools:$PATH"
 
 # https://smf.sh/
 [[ -d "$HOME/.sm/bin" ]] && export PATH="${PATH}:/Users/neves/.sm/bin:/Users/neves/.sm/pkg/active/bin:/Users/neves/.sm/pkg/active/sbin"

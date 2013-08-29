@@ -47,6 +47,6 @@ alias mongod-stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.mongodb
 
 alias mac-resolution="system_profiler SPDisplaysDataType | grep Resolution"
 
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
+if [ -f $(brew --prefix 2>/dev/null)/etc/bash_completion ]; then
     source $(brew --prefix)/etc/bash_completion
 fi

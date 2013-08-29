@@ -91,3 +91,7 @@ alias paths='echo -e ${PATH//:/\\n}'
 # decode/encode base64 from commandline (base64 -D)
 alias base64_decode="php -r \"echo base64_decode(trim(file_get_contents('php://stdin')));\""
 alias base64_encode="php -r \"echo base64_encode(trim(file_get_contents('php://stdin')));\""
+
+# show file encoding
+alias encoding="file -I"
+alias charset="encoding"

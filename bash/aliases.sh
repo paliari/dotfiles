@@ -21,3 +21,7 @@ alias gitc="git commit -m "
 alias gita="git add -A . && gits"
 alias git-push-ftp="git push && git ftp push"
 gitacp() { gita && gitc "gitacp $1" && git push $2; }
+
+
+# tools
+alias mou="/Applications/Mou.app/Contents/MacOS/Mou"

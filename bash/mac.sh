@@ -19,9 +19,25 @@ localhost() {
     cmd="-t ."
   fi
   line="-S 0.0.0.0:$port $cmd"
-  php54="$(brew --prefix php54)/bin/php -n"
-  echo "$php54 $line"
-  $php54 $line
+
+  if [[ $(which brew) ]]
+  then
+    if [[ $(brew --prefix php55) ]]
+    then
+      php5="$(brew --prefix php55)/bin/php -n"
+    else
+      if [[ $(brew --prefix php54) ]]
+      then
+        php5="$(brew --prefix php54)/bin/php -n"
+      else
+        return echo "php54 or php55 not found!"
+      fi
+    fi
+    echo "$php5 $line"
+    $php5 $line
+  else
+    echo "brew not found!"
+  fi
 }
 
 # test if brew exists

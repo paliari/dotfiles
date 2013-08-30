@@ -6,8 +6,8 @@ else
 	. $DOTDIR/bash/debian.sh
 fi
 
-source $DOTDIR/bash/env.sh
 source $DOTDIR/bash/paths.sh
+source $DOTDIR/bash/env.sh
 source $DOTDIR/bash/aliases.sh
 source $DOTDIR/bash/prompt.sh
 source $DOTDIR/bash/utils.sh

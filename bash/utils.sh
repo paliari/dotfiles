@@ -42,6 +42,7 @@ tbz() { tar -c $1 | bzip2 -k9c > $1.tar.bz2; l $1.tar.bz2; }
 lw() { l $(which $1); }
 
 # backup a file to name.bak
+# @TODO undo backup
 bkp() { mv "$1" "$1.bak"; lw "$1.bak"; }
 
 # change recursively the owner to www-data
@@ -63,13 +64,6 @@ findBySize() {
 }
 
 alias reload-bashrc="source ~/.bashrc"
-# mostra os 10 processos ordenados pela utilização de memória (em MB)
-alias pstop="ps -Ao rss,comm --sort=rss | awk '{printf \"%.0f %s\n\", \$1/1024, \$2}' | tail"
-alias psvtop="ps -Ao vsz,comm --sort=vsz | awk '{printf \"%.0f %s\n\", \$1/1024, \$2}' | uniq -f1 | tail"
-
-# sum memory usage
-alias sumrss="ps -e --format rss --no-heading | awk '{tot=tot+\$1} END {print tot}'"
-alias sumvsz="ps -e --format vsz --no-heading | awk '{tot=tot+\$1} END {print tot}'"
 
 # pretty print xml and json
 alias xmlp="tidy -indent -quiet -xml -raw"
@@ -87,10 +81,6 @@ alias png2jpg="mogrify -format jpg *.png"
 
 # mostra todos os paths separados por linha
 alias paths='echo -e ${PATH//:/\\n}'
-
-# decode/encode base64 from commandline (base64 -D)
-alias base64_decode="php -r \"echo base64_decode(trim(file_get_contents('php://stdin')));\""
-alias base64_encode="php -r \"echo base64_encode(trim(file_get_contents('php://stdin')));\""
 
 # show file encoding
 alias encoding="file -I"

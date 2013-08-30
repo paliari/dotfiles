@@ -1,5 +1,5 @@
-# shell
-
+# Mac não possui --group-directories-first, precisa instalar gls:
+# brew install coreutils
 which gls &>/dev/null
 if [ $? -eq 0 ]
 then
@@ -19,4 +19,5 @@ alias grep="grep -i"
 alias gits="git status -s"
 alias gitc="git commit -m "
 alias gita="git add -A . && gits"
+alias git-push-ftp="git push && git ftp push"
 gitacp() { gita && gitc "gitacp $1" && git push $2; }

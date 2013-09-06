@@ -24,11 +24,11 @@ localhost() {
   then
     if [[ $(brew --prefix php55) ]]
     then
-      php5="$(brew --prefix php55)/bin/php -n"
+      php5="$(brew --prefix php55)/bin/php"
     else
       if [[ $(brew --prefix php54) ]]
       then
-        php5="$(brew --prefix php54)/bin/php -n"
+        php5="$(brew --prefix php54)/bin/php"
       else
         return echo "php54 or php55 not found!"
       fi

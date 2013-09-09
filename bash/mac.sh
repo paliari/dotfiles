@@ -41,8 +41,8 @@ localhost() {
 }
 
 # test if brew exists
-[[ $(which brew) ]] && [[ $(brew --prefix php54) ]] && alias php54="$(brew --prefix php54)/bin/php -n"
-[[ $(which brew) ]] && [[ $(brew --prefix php55) ]] && alias php55="$(brew --prefix php55)/bin/php -n"
+[[ $(which brew) ]] && [[ $(brew --prefix php54 &>/dev/null) ]] && alias php54="$(brew --prefix php54)/bin/php -n"
+[[ $(which brew) ]] && [[ $(brew --prefix php55 &>/dev/null) ]] && alias php55="$(brew --prefix php55)/bin/php -n"
 
 # change default mac path: /usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 # to put /usr/local/bin before the others

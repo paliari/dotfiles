@@ -85,3 +85,6 @@ alias paths='echo -e ${PATH//:/\\n}'
 # show file encoding
 alias encoding="file -I"
 alias charset="encoding"
+
+alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1])"'
+alias urldecode='python -c "import sys, urllib as ul; print ul.unquote_plus(sys.argv[1])"'

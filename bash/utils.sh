@@ -59,6 +59,9 @@ gspop() { wget -O $1 http://w3b.commondatastorage.googleapis.com/$1; }
 gsdel() { curl -s -X DELETE http://w3b.commondatastorage.googleapis.com/$1; }
 gslist() { curl -s http://w3b.commondatastorage.googleapis.com | grep '<Key>[^<]*</Key>' -o | sed 's/<\/*Key>//g'; }
 
+# upload file to a temporary online place, so it can bem downloaded on another place
+remote-upload () { curl -s --form file=@$1 http://neves.zz.mu/; }
+
 findBySize() {
     find $1 -type f -size $2 -exec ls -lh {} \; | awk '{ print $5 "\t" $9 }'
 }

@@ -71,7 +71,7 @@ coffee-dir () {
 	then
 		echo "usage: coffee-dir coffee-root-dir output.js"
 	else
-		coffee -j $2 -bc $1 && cat $2
+		coffee -w -j $2 -bc $1
 	fi
 }
 

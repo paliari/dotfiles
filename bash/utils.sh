@@ -66,6 +66,15 @@ findBySize() {
     find $1 -type f -size $2 -exec ls -lh {} \; | awk '{ print $5 "\t" $9 }'
 }
 
+coffee-dir () {
+	if [ -z "$2" ];
+	then
+		echo "usage: coffee-dir coffee-root-dir output.js"
+	else
+		coffee -j $2 -bc $1 && cat $2
+	fi
+}
+
 alias update-dotfiles="cd \$DOTDIR && git pull && git status"
 
 alias reload-bashrc="source ~/.bashrc"

@@ -9,3 +9,9 @@ install_iterm() {
 	mv iTerm.app /Applications/
 	open /Applications/iTerm.app
 }
+
+install_command_line_tools() {
+	curl -O http://neves.zz.mu/upload/command_line_tools_os_x_mountain_lion_for_xcode__september_2013.dmg
+	open command_line_tools_os_x_mountain_lion_for_xcode*
+	open /Volumes/Command\ Line\ Tools\ \(Mountain\ Lion\)/Command\ Line\ Tools\ \(Mountain\ Lion\).mpkg
+}

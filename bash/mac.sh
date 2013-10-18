@@ -49,9 +49,6 @@ localhost() {
 # to put /usr/local/bin before the others
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
-# @TODO try .bashrc and .profile
-alias reload-bashrc="source ~/.bash_profile"
-
 alias ip="ifconfig | grep -o 192.168.*n"
 
 alias ipdsl="curl http://host64.appspot.com/ip"

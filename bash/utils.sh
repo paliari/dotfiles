@@ -77,7 +77,12 @@ coffee-dir () {
 
 alias update-dotfiles="cd \$DOTDIR && git pull && git status"
 
-alias reload-bashrc="source ~/.bashrc"
+if [ -a "~/.bash_profile" ];
+then
+  alias reload-bashrc="source ~/.bash_profile"
+else
+  alias reload-bashrc="source ~/.bashrc"
+fi
 
 # pretty print xml and json
 alias xmlp="tidy -indent -quiet -xml -raw"

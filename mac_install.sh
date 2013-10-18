@@ -20,4 +20,5 @@ install_sublime() {
 	cd ~/Downloads
 	wget http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%20Build%203047.dmg
 	open Sublime\ Text\ Build\ 3047.dmg
+	rm Sublime\ Text\ Build\ 3047.dmg
 }

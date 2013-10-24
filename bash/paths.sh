@@ -1,6 +1,9 @@
 # add .dotfiles bin
 export PATH="$DOTDIR/bin:$PATH"
 
+# add ~/bin
+export PATH="$HOME/bin:$PATH"
+
 # add mysql to path
 [[ -d "/usr/local/mysql/bin" ]] && export PATH="/usr/local/mysql/bin:$PATH"
 

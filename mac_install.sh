@@ -51,3 +51,9 @@ install_dotfiles() {
 	source bashrc
 	bash install.sh
 }
+
+install_php55() {
+	brew tap homebrew/dupes
+	brew tap josegonzalez/homebrew-php
+	brew install php55
+}

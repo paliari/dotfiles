@@ -44,4 +44,4 @@ EOF
 #download_bin vcprompt "https://github.com/djl/vcprompt/raw/master/bin/vcprompt"
 #download_bin dropbox.py "https://www.dropbox.com/download?dl=packages/dropbox.py"
 
-echo ". $DOTDIR/bashrc" >> ~/.bashrc
+echo ". $DOTDIR/bashrc" >> ~/.bash_profile

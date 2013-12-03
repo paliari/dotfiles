@@ -63,7 +63,7 @@ gslist() { curl -s http://w3b.commondatastorage.googleapis.com | grep '<Key>[^<]
 remote-upload () { curl -s --form file=@$1 http://neves.zz.mu/; }
 
 findBySize() {
-    find $1 -type f -size $2 -exec ls -lh {} \; | awk '{ print $5 "\t" $9 }'
+    find $1 -type f -size $2 \( ! -name /Volumes/ \) -exec ls -lh {} \; 2> /dev/null | awk '{ print $5 "\t" $9 }'
 }
 
 coffee-dir () {

@@ -8,3 +8,8 @@ export LANGUAGE=en_US.UTF-8
 
 which mate &>/dev/null && export EDITOR='mate -w'
 which subl &>/dev/null && export EDITOR='subl -w'
+
+if [[ -x "/usr/libexec/java_home" ]]
+then
+	export JAVA_HOME=`/usr/libexec/java_home`
+fi

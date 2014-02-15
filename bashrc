@@ -2,6 +2,7 @@ export DOTDIR=$HOME/.dotfiles
 
 if [[ $(uname) == 'Darwin' ]]; then
     . $DOTDIR/bash/mac.sh
+    . $DOTDIR/bash/brew.sh # slow
 else
 	. $DOTDIR/bash/debian.sh
 fi
@@ -13,7 +14,7 @@ source $DOTDIR/bash/prompt.sh
 source $DOTDIR/bash/utils.sh
 source $DOTDIR/bash/git-completion.bash
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # cdnjs auto complete
-[[ -s "$DOTDIR/bin/cdnjs" ]] && eval $($DOTDIR/bin/cdnjs _completion -g -p cdnjs)
+# [[ -s "$DOTDIR/bin/cdnjs" ]] && eval $($DOTDIR/bin/cdnjs _completion -g -p cdnjs)

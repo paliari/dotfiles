@@ -56,3 +56,4 @@ alias mongod-stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.mongodb
 
 alias mac-resolution="system_profiler SPDisplaysDataType | grep Resolution"
 
+[[ $(which rbenv) ]] && eval "$(rbenv init -)"

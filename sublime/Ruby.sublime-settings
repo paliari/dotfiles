@@ -3,6 +3,7 @@
 	[
 		"Gemfile",
 		"Guardfile",
-		"ru"
+		"ru",
+		"Vagrantfile"
 	]
 }

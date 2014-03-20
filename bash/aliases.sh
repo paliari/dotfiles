@@ -25,3 +25,6 @@ gitacp() { gita && gitc "gitacp $1" && git push $2; }
 
 # tools
 alias mou="/Applications/Mou.app/Contents/MacOS/Mou"
+
+# gulp utilizando coffee-script
+alias gulpc="gulp --require coffee-script"

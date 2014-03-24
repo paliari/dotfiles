@@ -18,7 +18,7 @@ cp ~/.dotfiles/gitconfig-user ~/.gitconfig-user
 sudo ln -sf ~/.dotfiles/gitignore ~/.gitignore
 
 # brew packages
-brew install wget bash-completion git-flow unrar node gist ffmpeg ssh-copy-id youtube-dl sqlite3 nginx p7zip
+brew install wget bash-completion git-flow unrar node gist ffmpeg ssh-copy-id youtube-dl sqlite3 nginx p7zip imagemagick
 brew tap homebrew/dupes
 brew tap josegonzalez/homebrew-php
 brew install php53 php54 php55 php56
@@ -35,7 +35,12 @@ brew tap thoughtbot/formulae
 brew install rcm
 
 # npm global packages
-npm install -g gulp coffee-script bower ios-sim
+npm install -g gulp coffee-script bower
+
+# cordova
+brew install android-sdk ios-sim cordova plugman ant
+# instalar a última versão do android sdk
+android
 
 # uninstall all rubygems
 for i in `gem list --no-versions`; do sudo gem uninstall -aIx $i; done
@@ -123,6 +128,10 @@ install_command_line_tools() {
 	exit
 }
 
+# local internet share tunnel
+# http://progrium.com/localtunnel/
+gem install localtunnel
+
 # tunnel
 # https://github.com/progrium/keychain.io
 # https://ngrok.com/
@@ -137,7 +146,7 @@ rm ngrok.zip
 cd ~/Downloads
 wget http://www.iterm2.com/downloads/stable/iTerm2_v1_0_0.zip
 unzip iTerm2*
-mv iTerm.app ~/Applications
+mv iTerm.app /Applications
 rm iTerm2*
 
 # Sublime Text

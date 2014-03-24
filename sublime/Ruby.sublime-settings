@@ -4,6 +4,7 @@
 		"Gemfile",
 		"Guardfile",
 		"ru",
-		"Vagrantfile"
+		"Vagrantfile",
+		".pryrc"
 	]
 }

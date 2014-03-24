@@ -6,7 +6,9 @@ promptinit
 prompt sorin
 
 # corrigir fn+arrow no prompt
+# $key_info[End]
 bindkey "^[[H" beginning-of-line
+# $key_info[Home]
 bindkey "^[[F" end-of-line
 
 export PATH="$HOME/bin:$DOTDIR/bin:$PATH"
@@ -26,7 +28,16 @@ alias gamend="git commit --amend --no-edit"
 # cat key.pem | fingerprint => 84:b8:56:92:2a:5f:43:a5:34:79:e0:62:9d:8d:66:d3:e7:e4:85:31
 alias fingerprint="openssl rsa -outform DER -pubout | openssl sha1 -c"
 
+# gulp with coffee-script
+alias gulpc="gulp --require coffee-script"
+
 # aws zsh autocomplete
 which aws_zsh_completer.sh &>/dev/null && source aws_zsh_completer.sh
 
 export AWS_DEFAULT_REGION=sa-east-1
+
+# http://docs.docker.io/en/latest/installation/mac/
+export DOCKER_HOST=tcp://localhost:4243
+
+# android SDK HOME
+export ANDROID_HOME=/usr/local/opt/android-sdk

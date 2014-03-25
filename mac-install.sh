@@ -2,11 +2,14 @@
 
 # instalar autoload do Apache (-w permanent, reload after reboot)
 sudo launchctl load -w /System/Library/LaunchDaemons/org.apache.httpd.plist
+# habilitar o apache
+sudo defaults write /System/Library/LaunchDaemons/org.apache.httpd Disabled -bool false
 
 # brew (install xcode tools and git)
 ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 brew doctor
 
+# forçar sudo
 sudo -v
 
 # neves/dotfiles
@@ -14,7 +17,7 @@ git clone https://github.com/neves/dotfiles.git ~/.dotfiles
 echo "source ~/.dotfiles/bashrc" >> ~/.bash_profile
 source ~/.bash_profile
 sudo ln -sf ~/.dotfiles/gitconfig ~/.gitconfig
-cp ~/.dotfiles/gitconfig-user ~/.gitconfig-user
+cp ~/.dotfiles/gitconfig.user ~/.gitconfig.user
 sudo ln -sf ~/.dotfiles/gitignore ~/.gitignore
 
 # brew packages
@@ -24,21 +27,11 @@ brew tap josegonzalez/homebrew-php
 brew install php53 php54 php55 php56
 brew link php55
 
-# http://myrepos.branchable.com/
-# gerenciar varios git ao mesmo tempo
-brew install mr
-
-# https://github.com/thoughtbot/rcm
-# http://thoughtbot.github.io/rcm/
-# gerenciar dotfiles
-brew tap thoughtbot/formulae
-brew install rcm
-
 # npm global packages
 npm install -g gulp coffee-script bower
 
 # cordova
-brew install android-sdk ios-sim cordova plugman ant
+brew install android-sdk ios-sim ant cordova plugman
 # instalar a última versão do android sdk
 android
 
@@ -50,17 +43,17 @@ brew update
 brew install rbenv ruby-build rbenv-gem-rehash rbenv-default-gems
 # sempre instala o bundler ao instalar um novo ruby
 echo 'bundler' >> "$(brew --prefix rbenv)/default-gems"
+echo 'gem: --no-ri --no-rdoc -V' >> ~/.gemrc
 source ~/.bash_profile
 rbenv install 2.1.1
 rbenv global 2.1.1
+gem install bundler
 
 cd ~/Downloads
 
 cat <<'EOF' > Gemfile
 source 'https://rubygems.org'
 gem rails
-gem knife-solo
-gem berkshelf
 EOF
 
 bundle install --verbose
@@ -72,75 +65,8 @@ brew install mysql
 # manual start
 mysql.server start
 
-# MongoDB
-brew install mongodb
-# autoload
-ln -sfv /usr/local/opt/mongodb/*.plist ~/Library/LaunchAgents
-# load
-launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist
-# or just mongod or mongod-start mongod-stop
-
-# utilizar bash como shell padrão
-chpass -s /bin/bash
-
-# pip para instalar pacotes python
-sudo easy_install pip
-# aws cli tools
-sudo pip install awscli
-
-# gerenciar varios git no $HOME
-brew install vcsh
-# salva em .config/vcsh
-
-# http://www.docker.io/
-brew install boot2docker
-boot2docker init
-# boot2docker up
-# boot2docker ssh # password: tcuser
-
 mkdir -p ~/Applications
 cd ~/Downloads
-
-# https://gist.github.com/trinitronx/6217746
-install_command_line_tools() {
-	set -e
-	OSX_VERS=$(sw_vers -productVersion | awk -F "." '{print $2}')
-
-	# Get Xcode CLI tools
-	# https://devimages.apple.com.edgekey.net/downloads/xcode/simulators/index-3905972D-B609-49CE-8D06-51ADC78E07BC.dvtdownloadableindex
-	TOOLS=clitools.dmg
-	if [ ! -f "$TOOLS" ]; then
-	  if [ "$OSX_VERS" -eq 7 ]; then
-		  DMGURL=http://devimages.apple.com/downloads/xcode/command_line_tools_for_xcode_os_x_lion_april_2013.dmg
-	  elif [ "$OSX_VERS" -eq 8 ]; then
-	  	  DMGURL=http://devimages.apple.com/downloads/xcode/command_line_tools_for_xcode_os_x_mountain_lion_april_2013.dmg
-	  elif [ "$OSX_VERS" -eq 9 ]; then
-		  DMGURL=http://adcdownload.apple.com/Developer_Tools/command_line_tools_os_x_mavericks_for_xcode__late_october_2013/command_line_tools_os_x_mavericks_for_xcode__late_october_2013.dmg
-	  fi
-	  curl "$DMGURL" -o "$TOOLS"
-	fi
-	TMPMOUNT=`/usr/bin/mktemp -d /tmp/clitools.XXXX`
-	hdiutil attach "$TOOLS" -mountpoint "$TMPMOUNT"
-	installer -pkg "$(find $TMPMOUNT -name '*.mpkg')" -target /
-	hdiutil detach "$TMPMOUNT"
-	rm -rf "$TMPMOUNT"
-	rm "$TOOLS"
-	exit
-}
-
-# local internet share tunnel
-# http://progrium.com/localtunnel/
-gem install localtunnel
-
-# tunnel
-# https://github.com/progrium/keychain.io
-# https://ngrok.com/
-mkdir -p ~/bin
-cd ~/Downloads
-wget https://dl.ngrok.com/darwin_amd64/ngrok.zip
-unzip ngrok.zip
-mv ngrok ~/bin/
-rm ngrok.zip
 
 # iTerm2
 cd ~/Downloads
@@ -271,29 +197,6 @@ hdiutil mount VirtualBox*.dmg
 sudo installer -pkg /Volumes/VirtualBox/VirtualBox.pkg -target /
 hdiutil unmount /Volumes/VirtualBox*
 rm VirtualBox*.dmg
-
-# Subtitle Master
-cd ~/Downloads
-wget "http://updates.subtitlemaster.com/app/Subtitle%20Master%200.6.zip"
-unzip Subtitle*.zip
-rm Subtitle*.zip
-mv Subtitle* ~/Applications/
-
-# VLC
-cd ~/Downloads
-wget http://get.videolan.org/vlc/2.1.4/macosx/vlc-2.1.4.dmg
-hdiutil mount vlc-*.dmg
-cp -R /Volumes/vlc-2.1.4/VLC.app ~/Applications
-hdiutil unmount /Volumes/vlc-*
-rm vlc-*.dmg
-
-# git-annex
-cd ~/Downloads
-wget http://downloads.kitenet.net/git-annex/OSX/current/10.9_Mavericks/git-annex.dmg
-hdiutil mount git-annex.dmg
-cp -R /Volumes/git-annex/git-annex.app ~/Applications
-hdiutil unmount /Volumes/git-annex
-rm git-annex.dmg
 
 # Right Zoom
 cd ~/Downloads

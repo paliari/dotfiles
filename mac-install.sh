@@ -126,7 +126,7 @@ rm googlechrome.dmg
 
 # FireFox
 cd ~/Downloads
-wget -O firefox.dmg "https://download.mozilla.org/?product=firefox-27.0.1-SSL&os=osx&lang=pt-BR"
+wget -O firefox.dmg "https://download-installer.cdn.mozilla.net/pub/firefox/releases/28.0/mac/pt-BR/Firefox%2028.0.dmg"
 hdiutil mount firefox.dmg
 cp -R /Volumes/Firefox/Firefox.app ~/Applications/
 hdiutil unmount /Volumes/Firefox
@@ -148,7 +148,7 @@ rm sequel-pro-*.dmg
 
 # PhpStorm
 cd ~/Downloads
-wget http://download.jetbrains.com/webide/PhpStorm-7.1.2.dmg
+wget http://download.jetbrains.com/webide/PhpStorm-7.1.3.dmg
 hdiutil mount PhpStorm-*.dmg
 cp -R "/Volumes/PhpStorm/PhpStorm.app" ~/Applications
 hdiutil unmount /Volumes/PhpStorm
@@ -192,7 +192,7 @@ rm Robomongo*.dmg
 
 # VirtualBox
 cd ~/Downloads
-wget http://download.virtualbox.org/virtualbox/4.3.6/VirtualBox-4.3.6-91406-OSX.dmg
+wget http://download.virtualbox.org/virtualbox/4.3.8/VirtualBox-4.3.8-92456-OSX.dmg
 hdiutil mount VirtualBox*.dmg
 sudo installer -pkg /Volumes/VirtualBox/VirtualBox.pkg -target /
 hdiutil unmount /Volumes/VirtualBox*

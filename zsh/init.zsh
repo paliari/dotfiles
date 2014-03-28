@@ -15,7 +15,14 @@ export PATH="$HOME/bin:$DOTDIR/bin:$PATH"
 
 # trocar alias do l
 unalias l
+unalias gls
+unalias gl
+# brew install coreutils para funcionar --group-directories-first
+alias gls="gls --color=auto --group-directories-first"
 alias l="ls -l"
+alias gl="gls -l"
+alias gl="gls -l"
+alias gla="gl -a"
 
 # git aliases
 alias gc=gcm
@@ -42,3 +49,6 @@ export DOCKER_HOST=tcp://localhost:4243
 
 # android SDK HOME
 export ANDROID_HOME=/usr/local/opt/android-sdk
+
+# utilizar o sublime como editor padrão
+export EDITOR=subl

@@ -21,7 +21,7 @@ cp ~/.dotfiles/gitconfig.user ~/.gitconfig.user
 sudo ln -sf ~/.dotfiles/gitignore ~/.gitignore
 
 # brew packages
-brew install wget bash-completion git-flow unrar node gist ffmpeg ssh-copy-id youtube-dl sqlite3 nginx p7zip imagemagick
+brew install wget bash-completion git-flow unrar node gist ffmpeg ssh-copy-id youtube-dl sqlite3 nginx p7zip imagemagick coreutils
 brew tap homebrew/dupes
 brew tap josegonzalez/homebrew-php
 brew install php55

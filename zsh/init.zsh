@@ -1,15 +1,15 @@
 export DOTDIR=$HOME/.dotfiles
 
 # definir o prompt padrão
-autoload -Uz promptinit
-promptinit
-prompt sorin
+#autoload -Uz promptinit
+#promptinit
+#prompt sorin
 
 # corrigir fn+arrow no prompt
 # $key_info[End]
-bindkey "^[[H" beginning-of-line
+#bindkey "^[[H" beginning-of-line
 # $key_info[Home]
-bindkey "^[[F" end-of-line
+#bindkey "^[[F" end-of-line
 
 export PATH="$HOME/bin:$DOTDIR/bin:$PATH"
 
@@ -21,6 +21,7 @@ alias l="ls -l"
 alias gc=gcm
 
 alias rails_stop='kill -9 $(cat tmp/pids/server.pid)'
+alias rails_stop_global='kill -9 $(lsof -i :3000 -t)'
 alias rails_restart="rails_stop; rails s -d"
 alias rails_reload=rails_restart
 alias gamend="git commit --amend --no-edit"

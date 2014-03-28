@@ -2,6 +2,8 @@
 	"extensions":
 	[
 		".zshrc",
-		".zpreztorc"
+		".zpreztorc",
+		".inputrc",
+		".editrc"
 	]
 }

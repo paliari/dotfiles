@@ -5,6 +5,7 @@
 		"Guardfile",
 		"ru",
 		"Vagrantfile",
-		".pryrc"
+		".pryrc",
+		"Berksfile"
 	]
 }

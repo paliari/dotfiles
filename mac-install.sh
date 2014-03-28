@@ -24,15 +24,13 @@ sudo ln -sf ~/.dotfiles/gitignore ~/.gitignore
 brew install wget bash-completion git-flow unrar node gist ffmpeg ssh-copy-id youtube-dl sqlite3 nginx p7zip imagemagick
 brew tap homebrew/dupes
 brew tap josegonzalez/homebrew-php
-brew install php53 php54 php55 php56
+brew install php55
 brew link php55
 
 # npm global packages
-npm install -g gulp coffee-script bower
+sudo npm install -g coffee-script bower gulp android-sdk ios-sim ant cordova plugman
 
-# cordova
-brew install android-sdk ios-sim ant cordova plugman
-# instalar a última versão do android sdk
+# instalar a última versão do android sdk (visual)
 android
 
 # uninstall all rubygems

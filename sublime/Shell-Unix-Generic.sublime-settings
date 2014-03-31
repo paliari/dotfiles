@@ -4,6 +4,7 @@
 		".zshrc",
 		".zpreztorc",
 		".inputrc",
-		".editrc"
+		".editrc",
+		"zpreztorc"
 	]
 }

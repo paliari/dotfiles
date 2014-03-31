@@ -14,9 +14,10 @@ export DOTDIR=$HOME/.dotfiles
 export PATH="$HOME/bin:$DOTDIR/bin:$PATH"
 
 # trocar alias do l
-unalias l
-unalias gls
-unalias gl
+unalias l &> /dev/null
+unalias gls &> /dev/null
+unalias gl &> /dev/null
+
 # brew install coreutils para funcionar --group-directories-first
 alias gls="gls --color=auto --group-directories-first"
 alias l="ls -l"
@@ -25,6 +26,11 @@ alias gl="gls -l"
 alias gla="gl -a"
 
 # git aliases
+unalias gs &> /dev/null
+unalias gd &> /dev/null
+alias gs="git status"
+alias gd="git diff"
+alias ga="git add -A"
 alias gc=gcm
 
 alias rails_stop='kill -9 $(cat tmp/pids/server.pid)'

@@ -5,12 +5,8 @@ sudo launchctl load -w /System/Library/LaunchDaemons/org.apache.httpd.plist
 # habilitar o apache
 sudo defaults write /System/Library/LaunchDaemons/org.apache.httpd Disabled -bool false
 
-# brew (install xcode tools and git)
-ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
-brew doctor
-
-# forçar sudo
-sudo -v
+# zsh http://skwp.github.io/dotfiles/
+sh -c "`curl -fsSL https://raw.github.com/skwp/dotfiles/master/install.sh`"
 
 # neves/dotfiles
 git clone https://github.com/neves/dotfiles.git ~/.dotfiles
@@ -20,8 +16,20 @@ sudo ln -sf ~/.dotfiles/gitconfig ~/.gitconfig
 cp ~/.dotfiles/gitconfig.user ~/.gitconfig.user
 sudo ln -sf ~/.dotfiles/gitignore ~/.gitignore
 
+echo '[[ -s "$HOME/.dotfiles/zsh/init.zsh" ]] && source "$HOME/.dotfiles/zsh/init.zsh"' >> ~/.zshrc
+chsh -s /bin/zsh
+
+# brew (install xcode tools and git)
+ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+brew doctor
+
+# forçar sudo
+sudo -v
+
+sudo pip install slugify
+
 # brew packages
-brew install wget bash-completion git-flow unrar node gist ffmpeg ssh-copy-id youtube-dl sqlite3 nginx p7zip imagemagick coreutils
+brew install wget bash-completion git-flow unrar node gist ffmpeg ssh-copy-id youtube-dl sqlite3 nginx p7zip imagemagick coreutils duti
 brew tap homebrew/dupes
 brew tap josegonzalez/homebrew-php
 brew install php55
@@ -51,7 +59,7 @@ cd ~/Downloads
 
 cat <<'EOF' > Gemfile
 source 'https://rubygems.org'
-gem rails
+gem 'rails'
 EOF
 
 bundle install --verbose

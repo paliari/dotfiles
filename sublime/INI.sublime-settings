@@ -3,6 +3,7 @@
 	[
 		".gitconfig",
 		"user",
-		".gitignore"
+		".gitignore",
+		"gitconfig"
 	]
 }

@@ -28,16 +28,16 @@ alias gla="gl -a"
 # git aliases
 unalias gs &> /dev/null
 unalias gd &> /dev/null
-alias gs="git status"
-alias gd="git diff"
-alias ga="git add -A"
+alias gs="git status -s"
+alias gd="git d"
+alias ga="git a"
 alias gc=gcm
+alias gamend="git amend"
 
 alias rails_stop='kill -9 $(cat tmp/pids/server.pid)'
 alias rails_stop_global='kill -9 $(lsof -i :3000 -t)'
 alias rails_restart="rails_stop; rails s -d"
 alias rails_reload=rails_restart
-alias gamend="git commit --amend --no-edit"
 
 # cat key.pem | fingerprint => 84:b8:56:92:2a:5f:43:a5:34:79:e0:62:9d:8d:66:d3:e7:e4:85:31
 alias fingerprint="openssl rsa -outform DER -pubout | openssl sha1 -c"

@@ -1,3 +1,5 @@
+# bloquear para não carregar duas vezes
+# if [[ -n "$DOTDIR" ]]; then return; fi
 export DOTDIR=$HOME/.dotfiles
 
 # definir o prompt padrão

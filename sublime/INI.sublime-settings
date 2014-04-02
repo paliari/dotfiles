@@ -4,6 +4,7 @@
 		".gitconfig",
 		"user",
 		".gitignore",
-		"gitconfig"
+		"gitconfig",
+		"chefignore"
 	]
 }

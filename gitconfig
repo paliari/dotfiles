@@ -19,9 +19,12 @@
   # https://github.com/evbogue/git-aliases/blob/master/bash_aliases
   # https://github.com/michel-kraemer/gitaliases/blob/master/gitaliases.sh
 
+  s = status -s
+  c = commit -m
   a = "!f() { git add -A $@ && git status -s; }; f"
   d = diff --diff-filter=M --unified=1 --minimal --patience
-  amend = git commit --amend --no-edit
+  amend = commit --amend --no-edit
+  reset-clean = "!git reset --hard && git clean -fd && git status"
 
   uncommit = reset --soft HEAD^     # go back before last commit, with files in uncommitted state
   unstage = reset HEAD              # remove files from index (tracking)

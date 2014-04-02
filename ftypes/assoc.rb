@@ -4,6 +4,7 @@
 # brew install duti
 
 assoc = "softwares.csv"
+assoc = File.expand_path("../#{assoc}",  __FILE__)
 lines = IO.readlines assoc
 parts = lines.collect { |line| line.split /\s+/ }
 

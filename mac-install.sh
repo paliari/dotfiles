@@ -35,6 +35,9 @@ brew tap josegonzalez/homebrew-php
 brew install php55
 brew link php55
 
+# http://caskroom.io/
+brew install phinze/cask/brew-cask
+
 # npm global packages
 sudo npm install -g coffee-script bower gulp android-sdk ios-sim ant cordova plugman
 
@@ -85,7 +88,7 @@ rm iTerm2*
 cd ~/Downloads
 wget http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%20Build%203059.dmg
 hdiutil mount Sublime*.dmg
-cp -R "/Volumes/Sublime Text/Sublime Text.app" ~/Applications 
+cp -R "/Volumes/Sublime Text/Sublime Text.app" ~/Applications
 hdiutil unmount /Volumes/Sublime*
 ln -s ~/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
 rm Sublime*.dmg
@@ -108,7 +111,7 @@ rm -rf sublime-url-protocol-mac-master
 cd ~/Downloads
 wget http://builds.phere.net/GitX/development/GitX-dev.dmg
 hdiutil mount GitX-dev.dmg
-cp -R "/Volumes/GitX 0.14.95/GitX.app" ~/Applications 
+cp -R "/Volumes/GitX 0.14.95/GitX.app" ~/Applications
 hdiutil unmount /Volumes/GitX*
 sudo ln -sf ~/Applications/GitX.app/Contents/Resources/gitx /usr/local/bin/gitx
 rm GitX*.dmg

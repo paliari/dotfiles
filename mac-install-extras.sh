@@ -2,6 +2,12 @@
 # gerenciar varios git ao mesmo tempo
 brew install mr
 
+# pdf utils
+brew cask install pdftk
+brew install poppler
+brew cask install xquartz
+brew install swftools --with-xpdf --with-jpeg
+
 # https://github.com/thoughtbot/rcm
 # http://thoughtbot.github.io/rcm/
 # gerenciar dotfiles

@@ -1,9 +1,9 @@
 export DOTDIR=$HOME/.dotfiles
 
 # definir o prompt padrão
-#autoload -Uz promptinit
-#promptinit
-#prompt sorin
+autoload -Uz promptinit
+promptinit
+prompt sorin
 
 # corrigir fn+arrow no prompt
 # $key_info[End]

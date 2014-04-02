@@ -32,7 +32,7 @@ alias gst="git s"
 alias gs=gst
 alias gd="git d"
 alias ga="git a"
-alias gc=gcm
+alias gc="git c"
 alias gamend="git amend"
 
 alias ghost=$(brew --prefix ghostscript 2&> /dev/null)/bin/gs

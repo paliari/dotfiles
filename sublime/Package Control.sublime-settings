@@ -2,7 +2,9 @@
 	"installed_packages":
 	[
 		"ApacheConf.tmLanguage",
+		"Arnold Clark Snippets for Ruby",
 		"AutoFileName",
+		"BeautifyRuby",
 		"Better CoffeeScript",
 		"Chef",
 		"Clipboard Manager",
@@ -14,6 +16,12 @@
 		"nginx",
 		"Placeholders",
 		"Pretty JSON",
+		"Rails Developer Snippets",
+		"Rails Partial",
+		"Ruby Debugger",
+		"Ruby on Rails snippets",
+		"Ruby Slim",
+		"RubyEval",
 		"SCSS"
 	]
 }

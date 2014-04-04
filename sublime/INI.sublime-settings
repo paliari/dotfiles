@@ -2,7 +2,6 @@
 	"extensions":
 	[
 		"user",
-		"gitconfig",
 		"chefignore"
 	]
 }

@@ -1,9 +1,7 @@
 {
 	"extensions":
 	[
-		".gitconfig",
 		"user",
-		".gitignore",
 		"gitconfig",
 		"chefignore"
 	]

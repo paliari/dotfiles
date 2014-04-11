@@ -6,6 +6,7 @@
 		".inputrc",
 		".editrc",
 		"zpreztorc",
-		"Dockerfile"
+		"Dockerfile",
+		".envrc"
 	]
 }

@@ -47,9 +47,9 @@
   snapshots = !git stash list --grep snapshot
 
   # http://blog.apiaxle.com/post/handy-git-tips-to-stop-you-getting-fired/#file_level_ignoring
-  assume   = update-index --assume-unchanged
-  unassume = update-index --no-assume-unchanged
-  assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
+  ignore   = update-index --assume-unchanged
+  unignore = update-index --no-assume-unchanged
+  ignored  = "!git ls-files -v | grep ^h | cut -c 3-"
 
   # http://blog.apiaxle.com/post/handy-git-tips-to-stop-you-getting-fired/#them_and_us
   ours   = "!f() { git checkout --ours $@ && git add $@; }; f"

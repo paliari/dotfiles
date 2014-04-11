@@ -55,6 +55,8 @@ alias gulpc="gulp --require coffee-script"
 
 # aws zsh autocomplete
 which aws_zsh_completer.sh &>/dev/null && source aws_zsh_completer.sh
+# http://direnv.net/
+which direnv &>/dev/null && eval "$(direnv hook zsh)"
 
 export AWS_DEFAULT_REGION=sa-east-1
 
@@ -79,3 +81,4 @@ findBySize() {
 }
 
 source $DOTDIR/zsh/lab.sh
+source $DOTDIR/zsh/osx.sh

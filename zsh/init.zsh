@@ -17,7 +17,8 @@ prompt sorin
 #bindkey "^[[F" end-of-line
 
 export PATH="$HOME/bin:$DOTDIR/bin:$PATH"
-
+# passar para rails generate
+export NO="--no-assets --no-helper --no-jbuilder --no-test-framework"
 # trocar alias do l
 unalias l &> /dev/null
 unalias gls &> /dev/null
@@ -39,6 +40,7 @@ alias gd="git d"
 alias ga="git a"
 alias gc="git c"
 alias gamend="git amend"
+alias gx="gitx"
 
 alias ghost=$(brew --prefix ghostscript 2&> /dev/null)/bin/gs
 

@@ -5,9 +5,6 @@ sudo launchctl load -w /System/Library/LaunchDaemons/org.apache.httpd.plist
 # habilitar o apache
 sudo defaults write /System/Library/LaunchDaemons/org.apache.httpd Disabled -bool false
 
-# zsh http://skwp.github.io/dotfiles/
-sh -c "`curl -fsSL https://raw.github.com/skwp/dotfiles/master/install.sh`"
-
 # neves/dotfiles
 git clone https://github.com/neves/dotfiles.git ~/.dotfiles
 echo "source ~/.dotfiles/bashrc" >> ~/.bash_profile
@@ -15,9 +12,6 @@ source ~/.bash_profile
 sudo ln -sf ~/.dotfiles/gitconfig ~/.gitconfig
 cp ~/.dotfiles/gitconfig.user ~/.gitconfig.user
 sudo ln -sf ~/.dotfiles/gitignore ~/.gitignore
-
-echo '[[ -s "$HOME/.dotfiles/zsh/init.zsh" ]] && source "$HOME/.dotfiles/zsh/init.zsh"' >> ~/.zshrc
-chsh -s /bin/zsh
 
 # brew (install xcode tools and git)
 ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"

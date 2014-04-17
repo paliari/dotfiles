@@ -17,13 +17,11 @@ sudo ln -sf ~/.dotfiles/gitignore ~/.gitignore
 ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 brew doctor
 
-# forçar sudo
-sudo -v
 
 sudo pip install slugify
 
 # brew packages
-brew install wget bash-completion git-flow unrar node gist ffmpeg ssh-copy-id youtube-dl sqlite3 nginx p7zip imagemagick coreutils duti direnv
+brew install wget bash-completion git-flow unrar node gist ffmpeg ssh-copy-id youtube-dl sqlite3 nginx p7zip imagemagick coreutils duti direnv heroku-toolbelt
 brew tap homebrew/dupes
 brew tap josegonzalez/homebrew-php
 brew install php55
@@ -31,6 +29,49 @@ brew link php55
 
 # http://caskroom.io/
 brew install phinze/cask/brew-cask
+
+# forçar sudo
+sudo -v
+# principais
+# desligar criação dos arquivos .DS_Store
+brew cask install deathtodsstore
+open -a DeathToDSStore --args -silent
+# outra alternative é redirecionar os .DS_Store para uma única pasta global
+brew cask install asepsis
+
+brew cask install iterm2
+brew cask install rightzoom
+brew cask install lightpaper
+brew cask install gitx-rowanj
+brew cask install sequel-pro
+brew cask install firefox
+brew cask install phpstorm
+brew cask install rubymine
+brew cask install vagrant
+brew cask install virtualbox
+
+sudo -v
+# extras
+brew cask install robomongo
+brew cask install appcleaner
+brew cask install adobe-air
+brew cask install git-annex
+brew cask install pdftk
+# para trabalhar com pdf e vetores
+brew cask install xquartz
+# painel de configuração de associação de extensões/URL Scheme
+brew cask install rcdefaultapp
+brew cask install vmware-fusion
+
+sudo -v
+# pessoal
+brew cask install vlc
+brew cask install subtitle-master
+brew cask install transmission
+brew cask install quickcast
+brew cask install stella
+
+# CASK MISSING: snes9x adobeair-sdk flexsdk
 
 # npm global packages
 sudo npm install -g coffee-script bower gulp android-sdk ios-sim ant cordova plugman

@@ -3,9 +3,7 @@
 brew install mr
 
 # pdf utils
-brew cask install pdftk
 brew install poppler
-brew cask install xquartz
 brew install swftools --with-xpdf --with-jpeg
 
 # https://github.com/thoughtbot/rcm

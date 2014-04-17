@@ -21,6 +21,7 @@
 
   s = status -s
   c = commit -m
+  co = checkout
   a = "!f() { git add -A $@ && git status -s; }; f"
   d = diff --diff-filter=M --unified=1 --minimal --patience
   amend = commit --amend --no-edit

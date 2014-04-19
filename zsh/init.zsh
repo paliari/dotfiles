@@ -10,6 +10,9 @@ autoload -Uz promptinit
 promptinit
 prompt sorin
 
+autoload -U zmv
+alias zmv="noglob zmv"
+
 # corrigir fn+arrow no prompt
 # $key_info[End]
 #bindkey "^[[H" beginning-of-line
@@ -34,20 +37,37 @@ alias gla="gl -a"
 # git aliases
 unalias gs &> /dev/null
 unalias gd &> /dev/null
+alias gu="git up"
 alias gst="git s"
 alias gs=gst
-alias gd="git d"
+alias gd="clear; git d"
 alias ga="git a"
 alias gc="git c"
 alias gamend="git amend"
 alias gx="gitx"
 
-alias ghost=$(brew --prefix ghostscript 2&> /dev/null)/bin/gs
+unalias gf &> /dev/null
+gf() { g dev && gco -b "feature/$1"; }
+
+alias pwdcp='pwd | pbcopy; echo "$PWD copiado para a área de transferência! Capturar com: cdpwd"'
+cdpwd() {
+  P=$(pbpaste)
+  if [ -d "$P" ]; then
+    cd $P
+  fi
+}
+
+# não precisa, pasta utilizar \gs ou unalias gs
+#alias ghost=$(brew --prefix ghostscript 2&> /dev/null)/bin/gs
 
 alias rails_stop='kill -9 $(cat tmp/pids/server.pid)'
 alias rails_stop_global='kill -9 $(lsof -i :3000 -t)'
 alias rails_restart="rails_stop; rails s -d"
 alias rails_reload=rails_restart
+
+# open file with firefox oor chrome
+alias firefox="open -a Firefox"
+alias chrome="open -a 'Google Chrome'"
 
 # cat key.pem | fingerprint => 84:b8:56:92:2a:5f:43:a5:34:79:e0:62:9d:8d:66:d3:e7:e4:85:31
 alias fingerprint="openssl rsa -outform DER -pubout | openssl sha1 -c"

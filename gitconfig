@@ -23,7 +23,7 @@
   c = commit -m
   co = checkout
   a = "!f() { git add -A $@ && git status -s; }; f"
-  d = diff --diff-filter=M --unified=1 --minimal --patience
+  d = diff --diff-filter=M --unified=0 --minimal --patience --no-prefix --no-renames
   amend = commit --amend --no-edit
   reset-clean = "!git reset --hard && git clean -fd && git status"
 
@@ -36,7 +36,6 @@
   dev = checkout develop
   master = checkout master
 
-  d = diff --diff-filter=M --unified=1
   last = diff --diff-filter=M --unified=1 HEAD^
 
   ls = log --all --date=short --format=format:'%C(bold yellow)%h %C(bold green)%ad %C(reset)%s %C(bold blue)[%an]%C(bold red)%d' --graph

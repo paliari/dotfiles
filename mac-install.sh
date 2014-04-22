@@ -24,7 +24,7 @@ sudo pip install slugify
 brew install wget bash-completion git-flow unrar node gist ffmpeg ssh-copy-id youtube-dl sqlite3 nginx p7zip imagemagick coreutils duti direnv heroku-toolbelt
 brew tap homebrew/dupes
 brew tap josegonzalez/homebrew-php
-brew install php55
+brew install php55 --with-apache
 brew link php55
 
 # http://caskroom.io/

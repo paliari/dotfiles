@@ -45,6 +45,7 @@ alias ga="git a"
 alias gc="git c"
 alias gamend="git amend"
 alias gx="gitx"
+alias gp="git push -v"
 
 unalias gf &> /dev/null
 gf() { g dev && gco -b "feature/$1"; }
@@ -63,7 +64,9 @@ cdpwd() {
 alias rails_stop='kill -9 $(cat tmp/pids/server.pid)'
 alias rails_stop_global='kill -9 $(lsof -i :3000 -t)'
 alias rails_restart="rails_stop; rails s -d"
+alias rr=rails_restart
 alias rails_reload=rails_restart
+alias rc="rails c"
 
 # open file with firefox oor chrome
 alias firefox="open -a Firefox"

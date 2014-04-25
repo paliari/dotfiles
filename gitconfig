@@ -21,11 +21,16 @@
 
   s = status -s
   c = commit -m
+  # commit after merge
+  cm = commit --no-edit
+  # merge without commit
+  m = "!f() { git merge --no-ff --no-commit $@ && git status -s; }; f"
   co = checkout
   a = "!f() { git add -A $@ && git status -s; }; f"
   d = diff --diff-filter=M --unified=0 --minimal --patience --no-prefix --no-renames
   amend = commit --amend --no-edit
-  reset-clean = "!git reset --hard && git clean -fd && git status"
+  reset-clean     = "!git status && git reset --hard && git clean -f  && git status"
+  reset-clean-dir = "!git status && git reset --hard && git clean -fd && git status"
 
   uncommit = reset --soft HEAD^     # go back before last commit, with files in uncommitted state
   unstage = reset HEAD              # remove files from index (tracking)
@@ -36,7 +41,7 @@
   dev = checkout develop
   master = checkout master
 
-  last = diff --diff-filter=M --unified=1 HEAD^
+  last = diff --unified=0 HEAD^
 
   ls = log --all --date=short --format=format:'%C(bold yellow)%h %C(bold green)%ad %C(reset)%s %C(bold blue)[%an]%C(bold red)%d' --graph
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
@@ -77,3 +82,8 @@
 
 [include]
   path = .gitconfig.user
+[merge]
+	tool = p4merge
+[mergetool]
+	prompt = false
+	keepBackup = false

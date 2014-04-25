@@ -28,6 +28,9 @@ sudo easy_install pip
 # Amazon command line interface
 sudo pip install awscli
 
+# https://asciinema.org/
+sudo pip install asciinema
+
 # gerenciar varios git no $HOME
 brew install vcsh
 # salva em .config/vcsh

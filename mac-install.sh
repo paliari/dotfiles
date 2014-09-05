@@ -9,16 +9,20 @@ sudo defaults write /System/Library/LaunchDaemons/org.apache.httpd Disabled -boo
 git clone https://github.com/neves/dotfiles.git ~/.dotfiles
 echo "source ~/.dotfiles/bashrc" >> ~/.bash_profile
 source ~/.bash_profile
-sudo ln -sf ~/.dotfiles/gitconfig ~/.gitconfig
+ln -sf ~/.dotfiles/gitconfig ~/.gitconfig
 cp ~/.dotfiles/gitconfig.user ~/.gitconfig.user
-sudo ln -sf ~/.dotfiles/gitignore ~/.gitignore
+ln -sf ~/.dotfiles/gitignore ~/.gitignore
 
 # brew (install xcode tools and git)
 ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 brew doctor
 
 
-sudo pip install slugify
+# pip para instalar pacotes python
+sudo chown -R $USER /Library/Python/2.7/site-packages
+easy_install pip
+pip install slugify
+pip install pygments
 
 # brew packages
 brew install wget bash-completion git-flow unrar node gist ffmpeg ssh-copy-id youtube-dl sqlite3 nginx p7zip imagemagick coreutils duti direnv heroku-toolbelt
@@ -73,8 +77,10 @@ brew cask install stella
 
 # CASK MISSING: snes9x adobeair-sdk flexsdk
 
+# colocar meu usuário como dono de /usr/local, para não precisar utilizar sudo
+sudo chown -R $USER /usr/local
 # npm global packages
-sudo npm install -g coffee-script bower gulp android-sdk ios-sim ant cordova plugman
+npm install -g coffee-script bower gulp android-sdk ios-sim ant cordova plugman
 
 # instalar a última versão do android sdk (visual)
 android
@@ -99,6 +105,9 @@ cat <<'EOF' > Gemfile
 source 'https://rubygems.org'
 gem 'rails'
 EOF
+
+# mac command line stats
+gem install iStats
 
 bundle install --verbose
 

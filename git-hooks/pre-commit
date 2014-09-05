@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ -h "$0" ]
+  then
+    D=$(readlink "$0")
+  else
+    D=$(cd `dirname $0` && pwd)
+fi
+
+source "$D.d/forbid-master-commit"

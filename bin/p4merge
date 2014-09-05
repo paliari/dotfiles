@@ -1,0 +1,2 @@
+for arg; do [[ $arg = /* ]] || arg=$PWD/$arg; absargs+=("$arg"); done;
+$HOME/Applications/p4merge.app/Contents/Resources/launchp4merge "${absargs[@]}"

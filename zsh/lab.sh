@@ -1,3 +1,8 @@
+# parse yml file
+alias yml="ruby -e \"require 'yaml'; require 'pp';  pp YAML.load_file ARGV[0]\""
+
+# executar um arquivo .nw ou um diretório
+alias nw="open -n -a node-webkit"
 
 # converte pdf em ps e novamente em pdf para reduzir o tamanho
 # NÃO EXIBE ACENTOS!
@@ -16,6 +21,10 @@ pdf2ps2pdf() {
 # prepress (high quality, color preserving, 300 dpi imgs) (melhor qualidade/tamanho)
 # default  (almost identical to /screen)
 # trocar/juntar -dPDFSETTINGS=/ por -r150
+#-dColorImageResolution=$dpi \
+#-dGrayImageResolution=$dpi \
+#-dMonoImageResolution=$dpi \
+
 pdfzip() {
   level=$1
   input=$2
@@ -31,9 +40,6 @@ pdfzip() {
     -dColorImageDownsampleType=/Bicubic \
     -dGrayImageDownsampleType=/Bicubic  \
     -dMonoImageDownsampleType=/Bicubic  \
-    #-dColorImageResolution=$dpi \
-    #-dGrayImageResolution=$dpi \
-    #-dMonoImageResolution=$dpi \
     -dPDFSETTINGS=/$1 \
     -sOutputFile="$output" \
     "$input"
@@ -42,11 +48,11 @@ pdfzip() {
 pdfziptest() {
   name=${1%.*}
   echo screen
-  pdfzip screen   "$1" "$name".1screen.pdf
+  pdfzip screen   "$1" "$name"_1screen.pdf
   echo ebook
-  pdfzip ebook    "$1" "$name".2ebook.pdf
-  echo prepress
-  pdfzip prepress "$1" "$name".3prepress.pdf
+  pdfzip ebook    "$1" "$name"_2ebook.pdf
   echo default
-  pdfzip default  "$1" "$name".4default.pdf
+  pdfzip default  "$1" "$name"_3default.pdf
+  echo prepress
+  pdfzip prepress "$1" "$name"_4prepress.pdf
 }

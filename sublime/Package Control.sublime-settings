@@ -1,6 +1,7 @@
 {
 	"installed_packages":
 	[
+		"All Autocomplete",
 		"ApacheConf.tmLanguage",
 		"Arnold Clark Snippets for Ruby",
 		"AutoFileName",
@@ -8,13 +9,16 @@
 		"Better CoffeeScript",
 		"Chef",
 		"Clipboard Manager",
+		"Dockerfile Syntax Highlighting",
 		"EditorConfig",
 		"Emmet",
 		"Git",
 		"Git Config",
+		"GitGutter",
 		"HTML-CSS-JS Prettify",
 		"Indent XML",
 		"LESS",
+		"MacTerminal",
 		"Modific",
 		"nginx",
 		"Placeholders",
@@ -25,6 +29,7 @@
 		"Ruby on Rails snippets",
 		"Ruby Slim",
 		"RubyEval",
-		"SCSS"
+		"SCSS",
+		"SublimeREPL"
 	]
 }

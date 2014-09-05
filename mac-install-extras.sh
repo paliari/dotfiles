@@ -23,13 +23,11 @@ launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist
 # exemplo de como utilizar bash como shell padrão
 # chpass -s /bin/bash
 
-# pip para instalar pacotes python
-sudo easy_install pip
 # Amazon command line interface
-sudo pip install awscli
+pip install awscli
 
 # https://asciinema.org/
-sudo pip install asciinema
+pip install asciinema
 
 # gerenciar varios git no $HOME
 brew install vcsh

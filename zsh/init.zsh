@@ -13,6 +13,10 @@ prompt sorin
 autoload -U zmv
 alias zmv="noglob zmv"
 
+# TODO add check test
+# brew install php-version # gerenciar versoes do php
+source $(brew --prefix php-version)/php-version.sh && php-version 5
+
 # corrigir fn+arrow no prompt
 # $key_info[End]
 #bindkey "^[[H" beginning-of-line

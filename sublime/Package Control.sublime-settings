@@ -1,7 +1,9 @@
 {
 	"installed_packages":
 	[
+		"AdvancedNewFile",
 		"All Autocomplete",
+		"AngularJS (CoffeeScript)",
 		"ApacheConf.tmLanguage",
 		"Arnold Clark Snippets for Ruby",
 		"AutoFileName",
@@ -9,6 +11,8 @@
 		"Better CoffeeScript",
 		"Chef",
 		"Clipboard Manager",
+		"CoffeeCompile",
+		"CoffeeComplete Plus (Autocompletion)",
 		"Dockerfile Syntax Highlighting",
 		"EditorConfig",
 		"Emmet",
@@ -17,6 +21,7 @@
 		"GitGutter",
 		"HTML-CSS-JS Prettify",
 		"Indent XML",
+		"Jade",
 		"LESS",
 		"MacTerminal",
 		"Modific",
@@ -25,11 +30,14 @@
 		"Pretty JSON",
 		"Rails Developer Snippets",
 		"Rails Partial",
+		"Railscasts Extended",
 		"Ruby Debugger",
 		"Ruby on Rails snippets",
 		"Ruby Slim",
 		"RubyEval",
 		"SCSS",
+		"Solarized Color Scheme",
+		"Stylus",
 		"SublimeREPL"
 	]
 }

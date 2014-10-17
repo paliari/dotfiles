@@ -14,7 +14,7 @@ cp ~/.dotfiles/gitconfig.user ~/.gitconfig.user
 ln -sf ~/.dotfiles/gitignore ~/.gitignore
 
 # brew (install xcode tools and git)
-ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew doctor
 
 

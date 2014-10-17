@@ -17,7 +17,6 @@ ln -sf ~/.dotfiles/gitignore ~/.gitignore
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew doctor
 
-
 # pip para instalar pacotes python
 sudo chown -R $USER /Library/Python/2.7/site-packages
 easy_install pip
@@ -26,12 +25,17 @@ pip install pygments
 
 # brew packages
 brew install wget bash-completion git-flow unrar node gist ffmpeg ssh-copy-id youtube-dl sqlite3 nginx p7zip imagemagick coreutils duti direnv heroku-toolbelt
+
+# repositório com várias softwares Unix GNU
 brew tap homebrew/dupes
+
+# repositório com várias versões do PHP
 brew tap josegonzalez/homebrew-php
-brew install php55 --with-apache
-brew link php55
+brew install php56 --with-apache
+brew link php56
 
 # http://caskroom.io/
+# instalar softwares desktop para o Mac
 brew install phinze/cask/brew-cask
 
 # forçar sudo
@@ -120,6 +124,8 @@ mysql.server start
 
 mkdir -p ~/Applications
 cd ~/Downloads
+
+# ======================================================== NÃO PRECISA MAIS, UTILIZAR AGORA PELO CASK ===========================================
 
 # iTerm2
 cd ~/Downloads

@@ -95,8 +95,8 @@ brew install rbenv ruby-build rbenv-gem-rehash rbenv-default-gems
 echo 'bundler' >> "$(brew --prefix rbenv)/default-gems"
 echo 'gem: --no-ri --no-rdoc -V' >> ~/.gemrc
 source ~/.bash_profile
-rbenv install 2.1.1
-rbenv global 2.1.1
+rbenv install 2.1.3
+rbenv global 2.1.3
 gem install bundler
 
 cd ~/Downloads
@@ -123,14 +123,14 @@ cd ~/Downloads
 
 # iTerm2
 cd ~/Downloads
-wget http://www.iterm2.com/downloads/stable/iTerm2_v1_0_0.zip
+wget https://iterm2.com/downloads/stable/iTerm2_v2_0.zip
 unzip iTerm2*
 mv iTerm.app /Applications
 rm iTerm2*
 
 # Sublime Text
 cd ~/Downloads
-wget http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%20Build%203059.dmg
+wget http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.2.dmg
 hdiutil mount Sublime*.dmg
 cp -R "/Volumes/Sublime Text/Sublime Text.app" ~/Applications
 hdiutil unmount /Volumes/Sublime*
@@ -201,7 +201,7 @@ rm sequel-pro-*.dmg
 
 # PhpStorm
 cd ~/Downloads
-wget http://download.jetbrains.com/webide/PhpStorm-7.1.3.dmg
+wget http://download.jetbrains.com/webide/PhpStorm-8.0.1.dmg
 hdiutil mount PhpStorm-*.dmg
 cp -R "/Volumes/PhpStorm/PhpStorm.app" ~/Applications
 hdiutil unmount /Volumes/PhpStorm
@@ -213,7 +213,7 @@ rm PhpStorm-*.dmg
 
 # RubyMine
 cd ~/Downloads
-wget http://download.jetbrains.com/ruby/RubyMine-6.0.3.dmg
+wget http://download.jetbrains.com/ruby/RubyMine-6.3.3.dmg
 hdiutil mount RubyMine-*.dmg
 cp -R /Volumes/RubyMine/RubyMine.app ~/Applications
 hdiutil unmount /Volumes/RubyMine

@@ -40,3 +40,5 @@ rm -f /tmp/$NAME.sparseimage
 
 # Rename the ISO and move it to the desktop
 mv /tmp/$NAME.cdr ~/Desktop/$NAME.iso
+
+# TODO: trocar no virtualbox Chipset para PIIX3 (System > Motherboard)

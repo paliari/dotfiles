@@ -53,6 +53,7 @@ brew cask install lightpaper
 brew cask install gitx-rowanj
 brew cask install sequel-pro
 brew cask install firefox
+brew cask install google-chrome
 brew cask install phpstorm
 brew cask install rubymine
 brew cask install vagrant
@@ -84,7 +85,8 @@ brew cask install stella
 # colocar meu usuário como dono de /usr/local, para não precisar utilizar sudo
 sudo chown -R $USER /usr/local
 # npm global packages
-npm install -g coffee-script bower gulp android-sdk ios-sim ant cordova plugman
+brew install android-sdk ios-sim ant
+npm install -g coffee-script bower gulp cordova plugman
 
 # instalar a última versão do android sdk (visual)
 android

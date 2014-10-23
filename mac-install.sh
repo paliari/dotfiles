@@ -24,7 +24,7 @@ pip install slugify
 pip install pygments
 
 # brew packages
-brew install wget bash-completion git-flow unrar node gist ffmpeg ssh-copy-id youtube-dl sqlite3 nginx p7zip imagemagick coreutils duti direnv heroku-toolbelt
+brew install composer wget bash-completion git-flow unrar node gist ffmpeg ssh-copy-id youtube-dl sqlite3 nginx p7zip imagemagick coreutils duti direnv heroku-toolbelt
 
 # repositório com várias softwares Unix GNU
 brew tap homebrew/dupes
@@ -58,6 +58,7 @@ brew cask install phpstorm
 brew cask install rubymine
 brew cask install vagrant
 brew cask install virtualbox
+brew cask install sublime-text
 
 sudo -v
 # extras

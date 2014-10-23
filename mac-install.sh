@@ -58,7 +58,11 @@ brew cask install phpstorm
 brew cask install rubymine
 brew cask install vagrant
 brew cask install virtualbox
-brew cask install sublime-text
+
+# add beta versions of softwares: https://github.com/caskroom/homebrew-versions
+brew tap caskroom/versions
+# install beta sublime3
+brew cask install sublime-text3
 
 sudo -v
 # extras

@@ -2,7 +2,21 @@
 alias yml="ruby -e \"require 'yaml'; require 'pp';  pp YAML.load_file ARGV[0]\""
 
 # executar um arquivo .nw ou um diretório
-alias nw="open -n -a node-webkit"
+alias nw="/opt/homebrew-cask/Caskroom/node-webkit/0.10.5/node-webkit-v0.10.5-osx-x64/node-webkit.app/Contents/MacOS/node-webkit"
+
+count_files() {
+  for f in $*
+  do
+    ls -1 "$f" | wc -l
+  done
+}
+
+image_size() {
+  for f in $*
+  do
+    identify "$f" | cut -d ' ' -f 3
+  done
+}
 
 # converte pdf em ps e novamente em pdf para reduzir o tamanho
 # NÃO EXIBE ACENTOS!

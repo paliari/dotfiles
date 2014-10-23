@@ -107,6 +107,9 @@ source 'https://rubygems.org'
 gem 'rails'
 EOF
 
+#git up
+sudo gem install git-up
+
 # mac command line stats
 gem install iStats
 

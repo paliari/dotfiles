@@ -25,7 +25,7 @@ pip install slugify
 pip install pygments
 
 # brew packages
-brew install wget bash-completion git-flow unrar node gist ffmpeg ssh-copy-id youtube-dl sqlite3 nginx p7zip imagemagick coreutils duti direnv heroku-toolbelt
+brew install composer wget bash-completion git-flow unrar node gist ffmpeg ssh-copy-id youtube-dl sqlite3 nginx p7zip imagemagick coreutils duti direnv heroku-toolbelt
 brew tap homebrew/dupes
 brew tap josegonzalez/homebrew-php
 brew install php55 --with-apache

@@ -1,3 +1,68 @@
+# executar primeiro as instalações com prompt ou que precisam interação (osx defaults e brew)
+
+sudo -v
+# install brew and Xcode-Tools + Git (5min)
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew doctor
+
+# repositório com várias softwares Unix GNU
+brew tap homebrew/dupes
+#  pdftk
+brew tap docmunch/pdftk
+
+# repositório com várias versões do PHP
+brew tap homebrew/versions
+brew tap josegonzalez/homebrew-php
+
+# http://caskroom.io/
+# instalar softwares desktop para o Mac
+brew install phinze/cask/brew-cask
+# add beta versions of softwares: https://github.com/caskroom/homebrew-versions
+brew tap caskroom/versions
+
+brew update
+
+# bassic
+brew install wget bash-completion ssh-copy-id sqlite3
+# main tools
+brew install node
+# pdf/image
+brew install imagemagick ghostscript pdftk
+brew cask install xquartz
+brew install poppler # MUITO demorado
+# ruby tools
+brew install direnv heroku-toolbelt
+# other tools
+brew install gist ffmpeg youtube-dl
+# extras
+unrar nginx p7zip composer
+
+# configurar extensão => app
+brew install duti
+
+# Versão GNU de comandos Unix
+# http://www.topbug.net/blog/2013/04/14/install-and-use-gnu-command-line-tools-in-mac-os-x/
+brew install coreutils
+
+# dev
+brew cask install iterm2
+brew cask install lightpaper
+brew cask install gitx-rowanj
+brew cask install sequel-pro
+brew cask install dropbox
+brew cask install firefox
+brew cask install google-chrome
+brew cask install phpstorm
+brew cask install rubymine
+brew cask install vagrant
+brew cask install virtualbox
+brew cask install sublime-text3
+
+# pessoal
+brew cask install vlc subtitle-master transmission transmission-remote-gui
+
+# ============================ OLD =============================
+
 # mac virgem 10GB ((9.0Gi with df -h))
 
 # instalar autoload do Apache (-w permanent, reload after reboot)
@@ -48,7 +113,7 @@ open -a DeathToDSStore --args -silent
 brew cask install asepsis
 
 brew cask install iterm2
-brew cask install rightzoom
+# brew cask install rightzoom # nao funciona no yosemit
 brew cask install lightpaper
 brew cask install gitx-rowanj
 brew cask install sequel-pro

@@ -60,7 +60,7 @@ defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 2
 
 ###############################################################################
-# Menus                                                                       #
+# UI                                                                       #
 ###############################################################################
 
 # add Volume to the defaults
@@ -69,3 +69,6 @@ defaults write com.apple.systemuiserver menuExtras -array \
 	"/System/Library/CoreServices/Menu Extras/Volume.menu" \
 	"/System/Library/CoreServices/Menu Extras/Battery.menu" \
 	"/System/Library/CoreServices/Menu Extras/Clock.menu"
+
+# auto show/hide dock
+defaults write com.apple.dock autohide -bool true

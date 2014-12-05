@@ -7,8 +7,6 @@ brew doctor
 
 # repositório com várias softwares Unix GNU
 brew tap homebrew/dupes
-#  pdftk
-brew tap docmunch/pdftk
 
 # repositório com várias versões do PHP
 brew tap homebrew/versions
@@ -27,9 +25,10 @@ brew install wget bash-completion ssh-copy-id sqlite3
 # main tools
 brew install node
 # pdf/image
-brew install imagemagick ghostscript pdftk
+brew install imagemagick ghostscript
 brew cask install xquartz
-brew install poppler # MUITO demorado
+brew install poppler
+brew install https://raw.github.com/quantiverge/homebrew-binary/pdftk/pdftk.rb
 # ruby tools
 brew install direnv heroku-toolbelt
 # other tools
@@ -45,18 +44,9 @@ brew install duti
 brew install coreutils
 
 # dev
-brew cask install iterm2
-brew cask install lightpaper
-brew cask install gitx-rowanj
-brew cask install sequel-pro
-brew cask install dropbox
-brew cask install firefox
-brew cask install google-chrome
-brew cask install phpstorm
-brew cask install rubymine
-brew cask install vagrant
-brew cask install virtualbox
-brew cask install sublime-text3
+brew cask install iterm2 sublime-text3 google-chrome firefox dropbox gitx-rowanj sequel-pro lightpaper
+brew cask install phpstorm rubymine
+brew cask install vagrant virtualbox
 
 # pessoal
 brew cask install vlc subtitle-master transmission transmission-remote-gui

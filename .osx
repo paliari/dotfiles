@@ -25,6 +25,10 @@ defaults write NSGlobalDomain KeyRepeat -int 0
 # wait 80ms before repeat
 defaults write NSGlobalDomain InitialKeyRepeat -int 8
 
+# Enable full keyboard access for all controls
+# (e.g. enable Tab in modal dialogs)
+defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
 ###############################################################################
 # SSD-specific tweaks                                                         #
 ###############################################################################

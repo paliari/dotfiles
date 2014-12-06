@@ -43,7 +43,7 @@ brew install mysql
 ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
 # ainda nao sei qual o melhor, java6 ou java7
 brew cask install java6
-brew cask install iterm2 sublime-text3 google-chrome firefox dropbox rowanj-gitx sequel-pro lightpaper
+brew cask install iterm2 sublime-text3 google-chrome firefox dropbox evernote rowanj-gitx sequel-pro lightpaper
 brew cask install phpstorm rubymine
 brew cask install vagrant virtualbox
 # mobile

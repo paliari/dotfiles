@@ -11,16 +11,19 @@ brew tap homebrew/dupes
 brew tap homebrew/versions
 brew tap josegonzalez/homebrew-php
 # http://caskroom.io/
-brew install phinze/cask/brew-cask
+brew install caskroom/cask/brew-cask
 # add beta versions of softwares: https://github.com/caskroom/homebrew-versions
 brew tap caskroom/versions
 
 brew update
 
+# automatiza brew update todo dia as 11:00
+curl -L https://github.com/mkalmes/brewupdate/raw/develop/brewupdate-install.sh | bash
+
 # basic
 brew install wget bash-completion ssh-copy-id sqlite3
 # main tools
-brew install node
+brew install node git-ftp
 # pdf/image
 brew install imagemagick ghostscript
 brew cask install xquartz
@@ -38,7 +41,8 @@ brew install duti
 # http://www.topbug.net/blog/2013/04/14/install-and-use-gnu-command-line-tools-in-mac-os-x/
 brew install coreutils
 # dev
-brew install mysql
+brew install mysql sqlitebrowser
+
 # start mysql at login
 ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
 # ainda nao sei qual o melhor, java6 ou java7
@@ -46,16 +50,30 @@ brew cask install java6
 brew cask install iterm2 sublime-text3 google-chrome firefox dropbox evernote rowanj-gitx sequel-pro lightpaper
 brew cask install phpstorm rubymine
 brew cask install vagrant virtualbox
+brew cask install mysqlworkbench
+# git UI
+brew cask install sourcetree
+# Docker UI
+brew cask install kitematic
 # mobile
 brew install android-sdk ant ios-sim
-# pessoal
-brew cask install vlc subtitle-master transmission transmission-remote-gui
+# pessoal.  Dash: license.dash-license no DropBox
+brew cask install vlc subtitle-master transmission transmission-remote-gui unrar dash teamviewer
+# audio processing
+brew install sox
 
 # RUBY
 
 brew install rbenv ruby-build
-rbenv install 2.1.5
-rbenv global 2.1.5
+rbenv install 2.2.1
+rbenv global 2.2.1
+
+# IE 8 XP VirtualBox
+
+curl -s https://raw.githubusercontent.com/xdissent/ievms/master/ievms.sh | env IEVMS_VERSIONS="8" bash
+
+wget -O /usr/local/bin/cpdf http://github.com/coherentgraphics/cpdf-binaries/raw/master/OSX-Intel/cpdf
+chmod +x /usr/local/bin/cpdf
 
 # ============================ OLD =============================
 

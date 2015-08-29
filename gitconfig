@@ -1,5 +1,5 @@
 [core]
-	excludesfile = ~/.gitignore
+	excludesfile = /Users/neves/.gitignore
   editor = subl -w
   eol = lf
 
@@ -81,7 +81,7 @@
   default = matching
 
 [include]
-  path = .gitconfig.user
+  path = /Users/neves/.gitconfig.user
 [merge]
 	tool = p4merge
 [mergetool]

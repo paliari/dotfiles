@@ -40,8 +40,8 @@ boot2docker init
 # boot2docker ssh # password: tcuser
 
 # local internet share tunnel
-# http://progrium.com/localtunnel/
-gem install localtunnel
+# http://localtunnel.me/
+npm install -g localtunnel
 
 # tunnel
 # https://github.com/progrium/keychain.io

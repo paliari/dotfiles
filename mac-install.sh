@@ -22,58 +22,86 @@ curl -L https://github.com/mkalmes/brewupdate/raw/develop/brewupdate-install.sh 
 
 # basic
 brew install wget bash-completion ssh-copy-id sqlite3
+
 # main tools
-brew install node git-ftp
+brew install node git-ftp icdiff
+
 # pdf/image
 brew install imagemagick ghostscript
 brew cask install xquartz
-brew install poppler
+brew install poppler webp
+brew install swftools --with-xpdf --with-jpeg
 brew install https://raw.github.com/quantiverge/homebrew-binary/pdftk/pdftk.rb
+
 # ruby tools
-brew install direnv heroku-toolbelt
+brew install direnv autoenv heroku-toolbelt
+
 # other tools
 brew install gist ffmpeg youtube-dl
+
 # extras
 unrar nginx p7zip composer
-# configurar extensão => app
+
+# configurar qual app abre qual extensão
 brew install duti
+
 # Versão GNU de comandos Unix
 # http://www.topbug.net/blog/2013/04/14/install-and-use-gnu-command-line-tools-in-mac-os-x/
 brew install coreutils
+
 # dev
-brew install mysql sqlitebrowser
+brew install mysql sqlitebrowser ngrok
 
 # start mysql at login
 ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
+
 # ainda nao sei qual o melhor, java6 ou java7
 brew cask install java6
 brew cask install iterm2 sublime-text3 google-chrome firefox dropbox evernote rowanj-gitx sequel-pro lightpaper
 brew cask install phpstorm rubymine
 brew cask install vagrant virtualbox
 brew cask install mysqlworkbench
+
 # git UI
 brew cask install sourcetree
+
 # Docker UI
 brew cask install kitematic
+
 # mobile
 brew install android-sdk ant ios-sim
+
 # pessoal.  Dash: license.dash-license no DropBox
-brew cask install vlc subtitle-master transmission transmission-remote-gui unrar dash teamviewer
+brew cask install vlc subtitle-master transmission transmission-remote-gui unrar dash teamviewer asepsis android-file-transfer
+
 # audio processing
 brew install sox
 
 # RUBY
-
 brew install rbenv ruby-build
 rbenv install 2.2.1
 rbenv global 2.2.1
+# auto rbenv rehash
+git clone https://github.com/sstephenson/rbenv-gem-rehash.git ~/.rbenv/plugins/rbenv-gem-rehash
 
-# IE 8 XP VirtualBox
-
-curl -s https://raw.githubusercontent.com/xdissent/ievms/master/ievms.sh | env IEVMS_VERSIONS="8" bash
-
+# CPDF
 wget -O /usr/local/bin/cpdf http://github.com/coherentgraphics/cpdf-binaries/raw/master/OSX-Intel/cpdf
 chmod +x /usr/local/bin/cpdf
+
+# internet explorer WindowsXP VirtualBox
+curl -s https://raw.githubusercontent.com/xdissent/ievms/master/ievms.sh | env IEVMS_VERSIONS="6 7 8" bash
+
+# repositório público de chaves ssh
+https://github.com/progrium/keychain.io
+
+
+# passwordless sudo
+# http://salvatore.garbesi.com/sudo-on-mac-without-password/
+# remover comentário da linha 41: %wheel ALL=(ALL) NOPASSWD: ALL
+sudo dscl . append /Groups/wheel GroupMembership neves
+
+
+
 
 # ============================ OLD =============================
 

@@ -66,7 +66,7 @@ cdpwd() {
 #alias ghost=$(brew --prefix ghostscript 2&> /dev/null)/bin/gs
 
 alias rails_stop='kill -9 $(cat tmp/pids/server.pid) && echo Rails Stopped'
-alias rails_restart="rails_stop; rails s -d"
+alias rails_restart="rails_stop; rails s -d; rake log:clear tmp:clear &;"
 alias rr=rails_restart
 alias rails_reload=rails_restart
 alias rc="rails c"

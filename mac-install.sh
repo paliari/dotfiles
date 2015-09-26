@@ -77,6 +77,9 @@ brew cask install vlc subtitle-master transmission transmission-remote-gui unrar
 # audio processing
 brew install sox
 
+# mac tools
+brew cask install spectacle ibettercharge audioslicer
+
 # RUBY
 brew install rbenv ruby-build
 rbenv install 2.2.1

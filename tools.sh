@@ -71,3 +71,10 @@ subl-gem() {
 alias rails_stop='(test -f tmp/pids/server.pid && kill -INT $(cat tmp/pids/server.pid) && echo Rails Stopped) || echo pid not found'
 
 alias rails_restart="spring stop; rails_stop; rails s -d; rake log:clear tmp:clear &;"
+
+# disable plugin loading for faster startup
+alias pry="pry --no-plugins"
+
+function colorspace() {
+  identify -verbose "$1[0]" | grep Colorspace
+}

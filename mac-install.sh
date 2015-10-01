@@ -1,30 +1,57 @@
+# ls -la ~
+# .CFUserTextEncoding
+# .Trash
+# .bash_history
+# .bash_sessions
+# Applications
+# Desktop
+# Documents
+# Downloads
+# Library
+# Movies
+# Music
+# Pictures
+# Public
+
 # executar primeiro as instalações com prompt ou que precisam interação (osx defaults e brew)
 
-sudo -v
-# install brew and Xcode-Tools + Git (5min)
+# install brew and Xcode-Tools + Git (5min) Click Install and accept Terms on new screen 
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew doctor
+# http://caskroom.io/
+brew install caskroom/cask/brew-cask
+brew update
+# add beta versions of softwares: https://github.com/caskroom/homebrew-versions
+brew tap caskroom/versions
+# install latest iterm2: http://iterm2.com/version3.html
+brew cask install iterm2-beta
+
+# passwordless sudo
+sudo mkdir -p /private/etc/sudoers.d
+echo '%wheel ALL=(ALL) NOPASSWD: ALL' | sudo tee /private/etc/sudoers.d/passwordless
+sudo dscl . append /Groups/wheel GroupMembership neves
+
+# automatiza brew update todo dia as 11:00
+mkdir -p $HOME/Library/LaunchAgents
+curl -L https://github.com/mkalmes/brewupdate/raw/develop/brewupdate-install.sh | bash
+
+# essential
+brew install wget bash-completion ssh-copy-id sqlite3
+
 
 # repositório com várias softwares Unix GNU
 brew tap homebrew/dupes
 # repositório com várias versões do PHP
 brew tap homebrew/versions
 brew tap josegonzalez/homebrew-php
-# http://caskroom.io/
-brew install caskroom/cask/brew-cask
-# add beta versions of softwares: https://github.com/caskroom/homebrew-versions
-brew tap caskroom/versions
 
-brew update
 
-# automatiza brew update todo dia as 11:00
-curl -L https://github.com/mkalmes/brewupdate/raw/develop/brewupdate-install.sh | bash
+# node
+brew install node
 
-# basic
-brew install wget bash-completion ssh-copy-id sqlite3
-
-# main tools
-brew install node git-ftp icdiff
+brew install git-ftp
+# colored diff side by side http://www.jefftk.com/icdiff
+brew install icdiff
 
 # pdf/image
 brew install imagemagick ghostscript
@@ -96,15 +123,6 @@ curl -s https://raw.githubusercontent.com/xdissent/ievms/master/ievms.sh | env I
 
 # repositório público de chaves ssh
 https://github.com/progrium/keychain.io
-
-
-# passwordless sudo
-# http://salvatore.garbesi.com/sudo-on-mac-without-password/
-# remover comentário da linha 41: %wheel ALL=(ALL) NOPASSWD: ALL
-sudo dscl . append /Groups/wheel GroupMembership neves
-
-
-
 
 # ============================ OLD =============================
 

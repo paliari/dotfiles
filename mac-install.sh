@@ -15,6 +15,23 @@
 
 # executar primeiro as instalações com prompt ou que precisam interação (osx defaults e brew)
 
+# OSX config
+
+# Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
+defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+# Disable press-and-hold for keys in favor of key repeat
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+# Set a blazingly fast keyboard repeat rate
+defaults write NSGlobalDomain KeyRepeat -int 0
+# Disable Mission control(F3) animation
+defaults write com.apple.dock expose-animation-duration -float 0.05
+killall Dock
+# Finder: show hidden files by default
+defaults write com.apple.finder AppleShowAllFiles -bool true
+# Finder: show all filename extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+killall Finder
+
 # install brew and Xcode-Tools + Git (5min) Click Install and accept Terms on new screen 
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew doctor
@@ -25,6 +42,7 @@ brew update
 brew tap caskroom/versions
 # install latest iterm2: http://iterm2.com/version3.html
 brew cask install iterm2-beta
+open -a iTerm && exit
 
 # passwordless sudo
 sudo mkdir -p /private/etc/sudoers.d
@@ -35,9 +53,29 @@ sudo dscl . append /Groups/wheel GroupMembership neves
 mkdir -p $HOME/Library/LaunchAgents
 curl -L https://github.com/mkalmes/brewupdate/raw/develop/brewupdate-install.sh | bash
 
+# configurar para baixar apenas a pasta osx
+brew cask install dropbox
+
+brew cask install sublime-text3
+# linkar a pasta do DropBox para User do sublime
+mkdir -p ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/
+ln -fs ~/Dropbox/osx/sublime3 ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
+open -a 'Sublime Text'
+# instalar package control e aguardar update: https://packagecontrol.io/installation
+
+# link .ssh
+ln -s ~/Dropbox/osx/ssh ~/.ssh
+
 # essential
 brew install wget bash-completion ssh-copy-id sqlite3
 
+# essential tools
+brew cask install google-chrome firefox evernote rowanj-gitx sequel-pro lightpaper
+brew cask --appdir=/Applications install megasync
+brew cask install box-sync
+open -a 'Google Chrome'
+open -a Dropbox
+open -a Evernote
 
 # repositório com várias softwares Unix GNU
 brew tap homebrew/dupes
@@ -84,7 +122,6 @@ ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
 
 # ainda nao sei qual o melhor, java6 ou java7
 brew cask install java6
-brew cask install iterm2 sublime-text3 google-chrome firefox dropbox evernote rowanj-gitx sequel-pro lightpaper
 brew cask install phpstorm rubymine
 brew cask install vagrant virtualbox
 brew cask install mysqlworkbench

@@ -73,7 +73,7 @@ brew install wget bash-completion ssh-copy-id sqlite3
 brew cask install google-chrome firefox evernote rowanj-gitx sequel-pro lightpaper
 brew cask --appdir=/Applications install megasync
 brew cask install box-sync
-open -a 'Google Chrome'
+open -a 'Google Chrome' # Ligar Avisar Antes de Sair CMD+Q
 open -a Dropbox
 open -a Evernote
 

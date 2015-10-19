@@ -11,12 +11,12 @@ Pry.config.prompt = [
     green = "\e[32m%s\e[0m"
     magenta = "\e[35m%s\e[0m"
 
-    prompt_name = '%s/' % blue % pry.config.prompt_name
+    prompt_name = '%s|' % magenta % pry.config.prompt_name
     ruby_version = '%s' % red  % RUBY_VERSION
     context = "(%s)" % green % "%s:%s" % [obj, nest_level]
-    rails_version = magenta % Rails.version if ENV['RAILS_ENV']
-    rails_env = green % ENV['RAILS_ENV'][0..4] if ENV['RAILS_ENV']
-    rails = ENV['RAILS_ENV'] ? "|%s/%s" % [rails_version, rails_env] : ''
+    rails_version = blue % Rails.version if ENV['RAILS_ENV']
+    rails_env = green % ENV['RAILS_ENV'][0] if ENV['RAILS_ENV']
+    rails = ENV['RAILS_ENV'] ? "%s%s" % [rails_env, rails_version] : ''
 
     prompt = ''
     prompt << prompt_name
@@ -44,7 +44,16 @@ Pry.config.prompt = [
 
 ActiveRecord::Base.logger = Logger.new(STDOUT) if ENV['RAILS_ENV']
 
+# Add thousand separator to big numbers: 1234567890.12 => "1_234_567_890.12"
+module NumericThousandSeparator
+  def to_sf
+      to_s.reverse.gsub(/(\d{3})\B/, '\1_').reverse
+  end
+end
+
+Numeric.include NumericThousandSeparator
+
 puts '~/.pryrc loaded!'
 
-Pry.config.should_load_plugins = false
-puts "Loadings plugins: #{Pry.plugins.keys.join ' '}" if Pry.config.should_load_plugins
+Pry.config.should_load_plugins = true
+puts Pry.config.should_load_plugins ? "Loadings plugins: #{Pry.plugins.keys.join ' '}" : 'plugins disabled!'

@@ -1,21 +1,20 @@
-# parse yml file
-alias yml="ruby -e \"require 'yaml'; require 'pp';  pp YAML.load_file ARGV[0]\""
-
-# executar um arquivo .nw ou um diretório
-alias nw="/opt/homebrew-cask/Caskroom/node-webkit/0.10.5/node-webkit-v0.10.5-osx-x64/node-webkit.app/Contents/MacOS/node-webkit"
-
-count_files() {
-  for f in $*
-  do
-    ls -1 "$f" | wc -l
-  done
+pdf-remove-page() {
+  if [ $# -lt 2 ]
+  then
+    echo 'Usage: pdf-remove-page file.pdf 2'
+    return
+  fi
+  page=$2
+  cpdf -merge "$1" 1-$((page-1)) "$1" $((page+1))-end -o "$1-$page.pdf"
 }
 
-image_size() {
-  for f in $*
-  do
-    identify "$f" | cut -d ' ' -f 3
-  done
+pdf-cmyk2rgb() {
+  if [ $# -lt 1 ]
+  then
+    echo 'Usage: pdf-cmyk2rgb file.pdf'
+    return
+  fi
+  \gs -sDEVICE=pdfwrite -dBATCH -dNOPAUSE -dColorConversionStrategy=/RGB -dUseTrimBox -sOutputFile="$1.rgb.pdf" "$1"
 }
 
 # converte pdf em ps e novamente em pdf para reduzir o tamanho

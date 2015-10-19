@@ -1,60 +1,111 @@
-# ls -la ~
-# .CFUserTextEncoding
-# .Trash
-# .bash_history
-# .bash_sessions
-# Applications
-# Desktop
-# Documents
-# Downloads
-# Library
-# Movies
-# Music
-# Pictures
-# Public
-
-# executar primeiro as instalações com prompt ou que precisam interação (osx defaults e brew)
-
+# ......................................................................................................................
 # OSX config
+#.......................................................................................................................
 
+# Works only after reboot
 # Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 # Disable press-and-hold for keys in favor of key repeat
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 # Set a blazingly fast keyboard repeat rate
 defaults write NSGlobalDomain KeyRepeat -int 0
+
 # Disable Mission control(F3) animation
 defaults write com.apple.dock expose-animation-duration -float 0.05
-killall Dock
+# disable Ds_Store on network
+defaults write com.apple.desktopservices DSDontWriteNetworkStores true
+
 # Finder: show hidden files by default
 defaults write com.apple.finder AppleShowAllFiles -bool true
 # Finder: show all filename extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+killall Dock
 killall Finder
 
-# install brew and Xcode-Tools + Git (5min) Click Install and accept Terms on new screen 
+# Config PHP
+echo 'date.timezone = America/Sao_Paulo' | sudo tee /etc/php.ini
+
+# ......................................................................................................................
+# HomeBrew
+#.......................................................................................................................
+
+# install brew and Xcode-Tools + Git (5min) Click Install and accept Terms on new screen
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew doctor
 # http://caskroom.io/
-brew install caskroom/cask/brew-cask
+brew install caskroom/cask/brew-cask wget
 brew update
 # add beta versions of softwares: https://github.com/caskroom/homebrew-versions
 brew tap caskroom/versions
+
+# ......................................................................................................................
+# DropBox
+#.......................................................................................................................
+
+brew cask install dropbox
+# configurar para baixar apenas a pasta osx
+open -a Dropbox
+
+# ......................................................................................................................
+# iTerm2
+#.......................................................................................................................
+
 # install latest iterm2: http://iterm2.com/version3.html
 brew cask install iterm2-beta
+# Apontar para a pasta no dropbox
 open -a iTerm && exit
 
-# passwordless sudo
-sudo mkdir -p /private/etc/sudoers.d
-echo '%wheel ALL=(ALL) NOPASSWD: ALL' | sudo tee /private/etc/sudoers.d/passwordless
-sudo dscl . append /Groups/wheel GroupMembership neves
+# Fonts: http://sourcefoundry.org/hack/
+cd ~/Downloads
+wget https://github.com/chrissimpkins/Hack/releases/download/v2.015/Hack-v2_015-ttf.zip
+unzip Hack-*-ttf.zip
+open Hack-*-ttf/Hack-*.ttf
+rm Hack-*-ttf.zip
 
-# automatiza brew update todo dia as 11:00
-mkdir -p $HOME/Library/LaunchAgents
-curl -L https://github.com/mkalmes/brewupdate/raw/develop/brewupdate-install.sh | bash
+# ......................................................................................................................
+# ZSH
+#.......................................................................................................................
 
-# configurar para baixar apenas a pasta osx
-brew cask install dropbox
+# link .ssh
+ln -fs ~/Dropbox/osx/ssh ~/.ssh
+ln -sf ~/Dropbox/osx/zsh/.zsh_history ~/.zsh_history
+
+brew install zsh
+chsh -s /bin/zsh
+
+# prezto
+git clone --recursive https://github.com/sorin-ionescu/prezto.git ~/.zprezto
+
+# oh-my-zsh
+git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+# conflicts with zsh-completions
+# git clone git@github.com:tarruda/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-completions.git ~/.oh-my-zsh/custom/plugins/zsh-completions
+git clone https://github.com/Valiev/almostontop.git ~/.oh-my-zsh/custom/plugins/almostontop
+
+# neves/dotfiles
+git clone git@github.com:neves/dotfiles.git ~/dotfiles
+ln -s $HOME/dotfiles/gitconfig $HOME/.gitconfig
+ln -s $HOME/dotfiles/gitconfig.user $HOME/.gitconfig.user
+ln -s $HOME/dotfiles/.pryrc $HOME/.pryrc
+echo 'source ~/dotfiles/zsh/zshrc.zsh' > .zshrc
+
+bash -c "`curl -sL get.freshshell.com`"
+
+# ......................................................................................................................
+# Default Files Association
+#.......................................................................................................................
+
+brew cask install rcdefaultapp # "Default Apps" no Spotlight
+# configurar qual app abre qual extensão
+brew install duti
+~/dotfiles/ftypes/assoc.rb
+
+# ......................................................................................................................
+# SublimeText 3
+#.......................................................................................................................
 
 brew cask install sublime-text3
 # linkar a pasta do DropBox para User do sublime
@@ -63,19 +114,189 @@ ln -fs ~/Dropbox/osx/sublime3 ~/Library/Application\ Support/Sublime\ Text\ 3/Pa
 open -a 'Sublime Text'
 # instalar package control e aguardar update: https://packagecontrol.io/installation
 
-# link .ssh
-ln -s ~/Dropbox/osx/ssh ~/.ssh
+# ......................................................................................................................
+# passwordless sudo
+#.......................................................................................................................
+
+sudo mkdir -p /private/etc/sudoers.d
+echo '%wheel ALL=(ALL) NOPASSWD: ALL' | sudo tee /private/etc/sudoers.d/passwordless
+sudo dscl . append /Groups/wheel GroupMembership neves
+
+# ......................................................................................................................
+# automatiza brew update todo dia as 11:00
+#.......................................................................................................................
+
+mkdir -p $HOME/Library/LaunchAgents
+curl -L https://github.com/mkalmes/brewupdate/raw/develop/brewupdate-install.sh | bash
+
+# ......................................................................................................................
+# Finder QuickLook extensions: https://github.com/sindresorhus/quick-look-plugins
+#.......................................................................................................................
+
+brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json quicklook-csv qlimagesize webpquicklook
+brew cask install qlprettypatch betterzipql suspicious-package
+
+# ......................................................................................................................
+# brew install
+#.......................................................................................................................
 
 # essential
-brew install wget bash-completion ssh-copy-id sqlite3
+brew install ssh-copy-id sqlite3 entr the_silver_searcher # ag
 
 # essential tools
-brew cask install google-chrome firefox evernote rowanj-gitx sequel-pro lightpaper
-brew cask --appdir=/Applications install megasync
-brew cask install box-sync
+brew cask install google-chrome firefox evernote rowanj-gitx sourcetree sequel-pro lightpaper cheatsheet
+open -a CheatSheet # keyboard shortcut holding CMD
 open -a 'Google Chrome' # Ligar Avisar Antes de Sair CMD+Q
-open -a Dropbox
 open -a Evernote
+brew cask install --appdir=/Applications megasync
+open -a Megasync
+# brew cask install box-sync
+
+# pdf/image
+brew install imagemagick ghostscript
+# other tools
+brew install ffmpeg youtube-dl mosh
+# colored diff side by side http://www.jefftk.com/icdiff
+brew install icdiff
+
+# pessoal.  Dash: license.dash-license no DropBox/osx
+brew cask install vlc subtitle-master transmission dash
+open -a Dash
+
+# window shortcuts
+brew cask install spectacle
+open -a Spectacle
+
+# ......................................................................................................................
+# RUBY
+# ......................................................................................................................
+
+brew install rbenv ruby-build openssl mysql
+brew link --force openssl
+rbenv install 2.2.3
+rbenv global 2.2.3
+echo 'gem: --no-ri --no-rdoc -V' > ~/.gemrc
+gem install bundler
+# auto rbenv rehash
+git clone https://github.com/sstephenson/rbenv-gem-rehash.git ~/.rbenv/plugins/rbenv-gem-rehash
+
+# ruby tools
+brew install direnv autoenv heroku-toolbelt
+heroku keys
+
+# node
+rm -rf /usr/local/lib/node_modules
+brew uninstall node
+brew install node --without-npm
+echo prefix=~/.node >> ~/.npmrc
+curl -L https://www.npmjs.com/install.sh | sh
+
+# ......................................................................................................................
+# JAVA 8
+# ......................................................................................................................
+
+brew cask install java
+open -a Firefox --args 'https://www.java.com/en/download/installed.jsp?detect=jre&try=1'
+osascript -e 'tell application "Safari" to open location "https://www.java.com/en/download/installed.jsp?detect=jre"'
+
+# ......................................................................................................................
+# VirtualBox
+# ......................................................................................................................
+
+brew cask install virtualbox
+# Docker Oficial setup
+brew cask install dockertoolbox
+# internet explorer WindowsXP VirtualBox
+curl -s https://raw.githubusercontent.com/xdissent/ievms/master/ievms.sh | env IEVMS_VERSIONS="6 7 8" bash
+
+# ......................................................................................................................
+# SpotLight
+# ......................................................................................................................
+
+# excluir um volume do SpotLight (evitar criar arquivos) precisa estar conectado
+sudo mdutil -d /Volumes/8GB
+sudo rm -rf /Volumes/8GB/.fseventsd /Volumes/8GB/.Spotlight-V100
+touch /Volumes/8GB/.metadata_never_index
+sudo umount /Volumes/8GB
+
+mdutil -d /Volumes/NEVES
+# excluir utilizando hidden file
+touch /Volumes/NEVES/.metadata_never_index
+
+# Excluir arquivos ao ejetar
+# http://www.javawa.nl/download.script/software=CleanEject&lang=en
+
+# ......................................................................................................................
+# Python
+# ......................................................................................................................
+
+# pip para instalar pacotes python
+sudo chown -R $USER /Library/Python/2.7/site-packages
+easy_install pip
+pip install slugify
+# pygmentize file # to syntax highlight on command line
+pip install pygments
+
+# ......................................................................................................................
+# PDF
+# ......................................................................................................................
+
+# /usr/local/Cellar/poppler/0.36.0/bin/pdfinfo and others
+brew install poppler
+# CPDF
+wget -O /usr/local/bin/cpdf http://github.com/coherentgraphics/cpdf-binaries/raw/master/OSX-Intel/cpdf
+chmod +x /usr/local/bin/cpdf
+
+# ......................................................................................................................
+# CAIXA
+# ......................................................................................................................
+
+# verificar módulo de segurança da caixa
+open -a Safari 'http://gastecnologia.com.br:8080/diagnostico'
+
+# para instalar, precisa reinicar o mac segurando CMD+R
+# Abrir o terminal e digitar csrutil disable
+
+# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# OPTIONAL
+# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+cat <<'EOF' > ~/.odbc.ini
+[ODBC Data Sources]
+pg = PostgreSQL ANSI
+
+[pg]
+Driver     = /usr/local/lib/psqlodbcw.so
+ServerName = localhost
+Database   = postgres
+Port       = 5432
+EOF
+# importar do postgresql para mysql
+# https://support.apple.com/kb/dl895?locale=pt_BR
+brew cask install mysqlworkbench psqlodbc
+pip install pyodbc
+# substituir pyodbc.so que vem com mysqlworkbench, pela ultima versão, pois não funciona
+cp /Library/Python/2.7/site-packages/pyodbc.so \
+/opt/homebrew-cask/Caskroom/mysqlworkbench/6.3.4/MySQLWorkbench.app/Contents/Resources/libraries/pyodbc.so
+# testar conexão com pg pelo ODBC
+/usr/local/Cellar/unixodbc/2.3.2_1/bin/isql pg
+
+
+brew cask install adobe-reader
+
+# Google Hangout Plugin
+brew cask install google-hangouts
+
+# Postgres Client
+brew cask install psequel
+# Postgres Server
+brew cask install --appdir=/Applications postgres
+
+# Editar Markdown
+https://github.com/minodisk/markn
+
+# DB Manager: http://www.valentina-db.com/en/valentina-studio-overview
+brew cask install valentina-studio
 
 # repositório com várias softwares Unix GNU
 brew tap homebrew/dupes
@@ -83,32 +304,15 @@ brew tap homebrew/dupes
 brew tap homebrew/versions
 brew tap josegonzalez/homebrew-php
 
-
-# node
-brew install node
-
 brew install git-ftp
-# colored diff side by side http://www.jefftk.com/icdiff
-brew install icdiff
 
-# pdf/image
-brew install imagemagick ghostscript
 brew cask install xquartz
 brew install poppler webp
 brew install swftools --with-xpdf --with-jpeg
 brew install https://raw.github.com/quantiverge/homebrew-binary/pdftk/pdftk.rb
 
-# ruby tools
-brew install direnv autoenv heroku-toolbelt
-
-# other tools
-brew install gist ffmpeg youtube-dl
-
 # extras
 unrar nginx p7zip composer
-
-# configurar qual app abre qual extensão
-brew install duti
 
 # Versão GNU de comandos Unix
 # http://www.topbug.net/blog/2013/04/14/install-and-use-gnu-command-line-tools-in-mac-os-x/
@@ -123,11 +327,7 @@ ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
 # ainda nao sei qual o melhor, java6 ou java7
 brew cask install java6
 brew cask install phpstorm rubymine
-brew cask install vagrant virtualbox
-brew cask install mysqlworkbench
-
-# git UI
-brew cask install sourcetree
+brew cask install vagrant
 
 # Docker UI
 brew cask install kitematic
@@ -135,61 +335,21 @@ brew cask install kitematic
 # mobile
 brew install android-sdk ant ios-sim
 
-# pessoal.  Dash: license.dash-license no DropBox
-brew cask install vlc subtitle-master transmission transmission-remote-gui unrar dash teamviewer asepsis android-file-transfer
+transmission-remote-gui asepsis android-file-transfer teamviewer unrar
 
 # audio processing
 brew install sox
 
 # mac tools
-brew cask install spectacle ibettercharge audioslicer
-
-# RUBY
-brew install rbenv ruby-build
-rbenv install 2.2.1
-rbenv global 2.2.1
-# auto rbenv rehash
-git clone https://github.com/sstephenson/rbenv-gem-rehash.git ~/.rbenv/plugins/rbenv-gem-rehash
-
-# CPDF
-wget -O /usr/local/bin/cpdf http://github.com/coherentgraphics/cpdf-binaries/raw/master/OSX-Intel/cpdf
-chmod +x /usr/local/bin/cpdf
-
-# internet explorer WindowsXP VirtualBox
-curl -s https://raw.githubusercontent.com/xdissent/ievms/master/ievms.sh | env IEVMS_VERSIONS="6 7 8" bash
+brew cask install ibettercharge audioslicer
 
 # repositório público de chaves ssh
 https://github.com/progrium/keychain.io
-
-# ============================ OLD =============================
-
-# mac virgem 10GB ((9.0Gi with df -h))
 
 # instalar autoload do Apache (-w permanent, reload after reboot)
 sudo launchctl load -w /System/Library/LaunchDaemons/org.apache.httpd.plist
 # habilitar o apache
 sudo defaults write /System/Library/LaunchDaemons/org.apache.httpd Disabled -bool false
-
-# neves/dotfiles
-git clone https://github.com/neves/dotfiles.git ~/.dotfiles
-echo "source ~/.dotfiles/bashrc" >> ~/.bash_profile
-source ~/.bash_profile
-ln -sf ~/.dotfiles/gitconfig ~/.gitconfig
-cp ~/.dotfiles/gitconfig.user ~/.gitconfig.user
-ln -sf ~/.dotfiles/gitignore ~/.gitignore
-
-# brew (install xcode tools and git)
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-brew doctor
-
-# pip para instalar pacotes python
-sudo chown -R $USER /Library/Python/2.7/site-packages
-easy_install pip
-pip install slugify
-pip install pygments
-
-# brew packages
-brew install composer wget bash-completion git-flow unrar node gist ffmpeg ssh-copy-id youtube-dl sqlite3 nginx p7zip imagemagick coreutils duti direnv heroku-toolbelt
 
 # repositório com várias softwares Unix GNU
 brew tap homebrew/dupes
@@ -199,37 +359,15 @@ brew tap josegonzalez/homebrew-php
 brew install php56 --with-apache
 brew link php56
 
-# http://caskroom.io/
-# instalar softwares desktop para o Mac
-brew install phinze/cask/brew-cask
-
-# forçar sudo
-sudo -v
-# principais
+# NAO FUNCIONA NO EL CAPITAIN DEVIDO A MODIFICACAO DE SEGURANÇA
 # desligar criação dos arquivos .DS_Store
 brew cask install deathtodsstore
 open -a DeathToDSStore --args -silent
 # outra alternative é redirecionar os .DS_Store para uma única pasta global
 brew cask install asepsis
 
-brew cask install iterm2
 # brew cask install rightzoom # nao funciona no yosemit
-brew cask install lightpaper
-brew cask install gitx-rowanj
-brew cask install sequel-pro
-brew cask install firefox
-brew cask install google-chrome
-brew cask install phpstorm
-brew cask install rubymine
-brew cask install vagrant
-brew cask install virtualbox
 
-# add beta versions of softwares: https://github.com/caskroom/homebrew-versions
-brew tap caskroom/versions
-# install beta sublime3
-brew cask install sublime-text3
-
-sudo -v
 # extras
 brew cask install robomongo
 brew cask install appcleaner
@@ -242,11 +380,7 @@ brew cask install xquartz
 brew cask install rcdefaultapp
 brew cask install vmware-fusion
 
-sudo -v
 # pessoal
-brew cask install vlc
-brew cask install subtitle-master
-brew cask install transmission
 brew cask install quickcast
 brew cask install stella
 
@@ -264,31 +398,11 @@ android
 # uninstall all rubygems
 for i in `gem list --no-versions`; do sudo gem uninstall -aIx $i; done
 
-# utilizar rbenv ao inves do ruby nativo do Mac, pois precisa de sudo
-brew update
-brew install rbenv ruby-build rbenv-gem-rehash rbenv-default-gems
-# sempre instala o bundler ao instalar um novo ruby
-echo 'bundler' >> "$(brew --prefix rbenv)/default-gems"
-echo 'gem: --no-ri --no-rdoc -V' >> ~/.gemrc
-source ~/.bash_profile
-rbenv install 2.1.3
-rbenv global 2.1.3
-gem install bundler
-
-cd ~/Downloads
-
-cat <<'EOF' > Gemfile
-source 'https://rubygems.org'
-gem 'rails'
-EOF
-
 #git up
 sudo gem install git-up
 
 # mac command line stats
 gem install iStats
-
-bundle install --verbose
 
 # mysql
 brew install mysql
@@ -297,49 +411,20 @@ brew install mysql
 # manual start
 mysql.server start
 
-mkdir -p ~/Applications
-cd ~/Downloads
-
-# ======================================================== NÃO PRECISA MAIS, UTILIZAR AGORA PELO CASK ===========================================
-
-# iTerm2
-cd ~/Downloads
-wget https://iterm2.com/downloads/stable/iTerm2_v2_0.zip
-unzip iTerm2*
-mv iTerm.app /Applications
-rm iTerm2*
-
-# Sublime Text
-cd ~/Downloads
-wget http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.2.dmg
-hdiutil mount Sublime*.dmg
-cp -R "/Volumes/Sublime Text/Sublime Text.app" ~/Applications
-hdiutil unmount /Volumes/Sublime*
-ln -s ~/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
-rm Sublime*.dmg
-
+# ======================================================== NÃO PRECISA MAIS, UTILIZAR AGORA PELO CASK ==================
 
 # Sublime url protocol: https://github.com/saetia/sublime-url-protocol-mac
 cd ~/Downloads
 wget https://github.com/saetia/sublime-url-protocol-mac/archive/master.zip
 unzip master.zip
 mv sublime-url-protocol-mac-master/Sublime\ Protocol.app ~/Applications/
-open ~/Applications/Sublime\ Protocol.app
+open -a 'Sublime Protocol'
 rm master.zip
 rm -rf sublime-url-protocol-mac-master
 
 # Sublime Extensions
 # https://github.com/gornostal/Modific
 # http://editorconfig.org/
-
-# GitX
-cd ~/Downloads
-wget http://builds.phere.net/GitX/development/GitX-dev.dmg
-hdiutil mount GitX-dev.dmg
-cp -R "/Volumes/GitX 0.14.95/GitX.app" ~/Applications
-hdiutil unmount /Volumes/GitX*
-sudo ln -sf ~/Applications/GitX.app/Contents/Resources/gitx /usr/local/bin/gitx
-rm GitX*.dmg
 
 # DiffMerge
 cd ~/Downloads
@@ -349,93 +434,3 @@ cp -r "/Volumes/DiffMerge 4.2.0.697 intel stable/DiffMerge.app" /Applications/
 hdiutil unmount /Volumes/DiffMerge*
 sudo ln -sf /Applications/DiffMerge.app/Contents/Resources/diffmerge.sh  /usr/bin/diffmerge
 rm DiffMerge*.dmg
-
-# Google Chrome
-cd ~/Downloads
-wget https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg
-hdiutil mount googlechrome.dmg
-cp -R "/Volumes/Google Chrome/Google Chrome.app" ~/Applications
-hdiutil unmount /Volumes/Google*
-rm googlechrome.dmg
-
-# FireFox
-cd ~/Downloads
-wget -O firefox.dmg "https://download-installer.cdn.mozilla.net/pub/firefox/releases/28.0/mac/pt-BR/Firefox%2028.0.dmg"
-hdiutil mount firefox.dmg
-cp -R /Volumes/Firefox/Firefox.app ~/Applications/
-hdiutil unmount /Volumes/Firefox
-rm firefox.dmg
-
-# DropBox
-cd ~/Downloads
-wget -O dropbox.dmg "https://www.dropbox.com/download?src=index&plat=mac"
-hdiutil mount dropbox.dmg
-open "/Volumes/Dropbox Installer/Dropbox.app"
-
-# Sequel Pro
-cd ~/Downloads
-wget https://sequel-pro.googlecode.com/files/sequel-pro-1.0.2.dmg
-hdiutil mount sequel-pro-*.dmg
-cp -R "/Volumes/Sequel Pro 1.0.2/Sequel Pro.app" ~/Applications
-hdiutil unmount /Volumes/Sequel*
-rm sequel-pro-*.dmg
-
-# PhpStorm
-cd ~/Downloads
-wget http://download.jetbrains.com/webide/PhpStorm-8.0.1.dmg
-hdiutil mount PhpStorm-*.dmg
-cp -R "/Volumes/PhpStorm/PhpStorm.app" ~/Applications
-hdiutil unmount /Volumes/PhpStorm
-rm PhpStorm-*.dmg
-
-# JetBrains Plugins
-# https://github.com/editorconfig/editorconfig-jetbrains
-# angular
-
-# RubyMine
-cd ~/Downloads
-wget http://download.jetbrains.com/ruby/RubyMine-6.3.3.dmg
-hdiutil mount RubyMine-*.dmg
-cp -R /Volumes/RubyMine/RubyMine.app ~/Applications
-hdiutil unmount /Volumes/RubyMine
-rm RubyMine-*.dmg
-
-# Vagrant
-cd ~/Downloads
-wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.5.0.dmg
-hdiutil mount vagrant*.dmg
-sudo installer -pkg /Volumes/Vagrant/Vagrant.pkg -target /
-hdiutil unmount /Volumes/Vagrant*
-rm vagrant*.dmg
-
-# LightPaper
-cd ~/Downloads
-wget http://cl.ly/3c370B2o0J2A/download/LightPaper_v0.8.7.dmg
-hdiutil mount LightPaper*
-cp -R /Volumes/LightPaper/LightPaper.app ~/Applications
-hdiutil unmount /Volumes/LightPaper*
-rm LightPaper*.dmg
-
-# RoboMongo
-cd ~/Downloads
-wget http://robomongo.org/files/mac/Robomongo-0.8.4-x86_64.dmg
-hdiutil mount Robomongo*.dmg
-cp -R /Volumes/Robomongo-0.8.4-x86_64/Robomongo.app ~/Applications
-hdiutil unmount /Volumes/Robomongo*
-rm Robomongo*.dmg
-
-# VirtualBox
-cd ~/Downloads
-wget http://download.virtualbox.org/virtualbox/4.3.8/VirtualBox-4.3.8-92456-OSX.dmg
-hdiutil mount VirtualBox*.dmg
-sudo installer -pkg /Volumes/VirtualBox/VirtualBox.pkg -target /
-hdiutil unmount /Volumes/VirtualBox*
-rm VirtualBox*.dmg
-
-# Right Zoom
-cd ~/Downloads
-wget http://www.blazingtools.com/mac/RightZoom.zip
-unzip RightZoom.zip
-mv RightZoom.app ~/Applications/
-rm RightZoom.zip
-open ~/Applications/RightZoom.app

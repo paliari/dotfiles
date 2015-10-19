@@ -1,3 +1,36 @@
+pathadd() {
+    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+        PATH="${PATH:+"$PATH:"}$1"
+    fi
+}
+
+alias paths='echo $PATH | tr ":" "\n"'
+
+alias addpath=pathadd
+
+alias fsize="stat -f %z"
+alias down="cd ~/Downloads"
+
+# FileSearch
+function f() { find . -iname "*$1*" ${@:2} }
+
+lw() { l $(which $1); }
+
+bkp() { mv "$1" "$1.bak"; lw "$1.bak"; }
+
+# findBySize . +100MB
+findBySize() {
+    find $1 -type f -size $2 \( ! -name /Volumes/ \) -exec ls -lh {} \; 2> /dev/null | awk '{ print $5 "\t" $9 }'
+}
+
+alias pwdcp='pwd | pbcopy; echo "$PWD copiado para a área de transferência! Capturar com: cdpwd"'
+cdpwd() {
+  P=$(pbpaste)
+  if [ -d "$P" ]; then
+    cd $P
+  fi
+}
+
 # simplifica o uso de for loops
 loop() {
   if [ $# -lt 2 ]
@@ -24,20 +57,6 @@ loop() {
     # executa o comando passado no primeiro parametro entre aspas
     eval $cmd
   done
-}
-
-# mv files from folder to parent and remove folder
-# mv -f */* . && for dir in */; do echo $dir; rmdir "$dir"; done
-
-# extend image and center to a size
-# src, size, dest
-center-image() {
-  if [ $# -lt 3 ]
-  then
-    echo 'Usage: center-image path.png 320x240 output.png'
-    return
-  fi
-  convert $1 -gravity center -background transparent -extent $2 $3
 }
 
 # ip do gateway da rede
@@ -78,3 +97,37 @@ alias pry="pry --no-plugins"
 function colorspace() {
   identify -verbose "$1[0]" | grep Colorspace
 }
+
+# parse yml file
+alias yml="ruby -e \"require 'yaml'; require 'pp';  pp YAML.load_file ARGV[0]\""
+
+# executar um arquivo .nw ou um diretório
+alias nw="/opt/homebrew-cask/Caskroom/node-webkit/0.10.5/node-webkit-v0.10.5-osx-x64/node-webkit.app/Contents/MacOS/node-webkit"
+
+count_files() {
+  for f in $*
+  do
+    ls -1 "$f" | wc -l
+  done
+}
+
+image_size() {
+  for f in $*
+  do
+    identify "$f" | cut -d ' ' -f 3
+  done
+}
+
+# extend image and center to a size
+# src, size, dest
+center-image() {
+  if [ $# -lt 3 ]
+  then
+    echo 'Usage: center-image path.png 320x240 output.png'
+    return
+  fi
+  convert $1 -gravity center -background transparent -extent $2 $3
+}
+
+# mv files from folder to parent and remove folder
+# mv -f */* . && for dir in */; do echo $dir; rmdir "$dir"; done

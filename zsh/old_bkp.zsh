@@ -54,14 +54,6 @@ alias gp="git push -v"
 unalias gf &> /dev/null
 gf() { g dev && gco -b "feature/$1"; }
 
-alias pwdcp='pwd | pbcopy; echo "$PWD copiado para a área de transferência! Capturar com: cdpwd"'
-cdpwd() {
-  P=$(pbpaste)
-  if [ -d "$P" ]; then
-    cd $P
-  fi
-}
-
 # não precisa, pasta utilizar \gs ou unalias gs
 #alias ghost=$(brew --prefix ghostscript 2&> /dev/null)/bin/gs
 
@@ -96,17 +88,6 @@ export ANDROID_HOME=/usr/local/opt/android-sdk
 
 # utilizar o sublime como editor padrão
 export EDITOR=subl
-
-alias fsize="stat -f %z"
-
-lw() { l $(which $1); }
-
-bkp() { mv "$1" "$1.bak"; lw "$1.bak"; }
-
-# findBySize . +100MB
-findBySize() {
-    find $1 -type f -size $2 \( ! -name /Volumes/ \) -exec ls -lh {} \; 2> /dev/null | awk '{ print $5 "\t" $9 }'
-}
 
 source $DOTDIR/zsh/lab.sh
 source $DOTDIR/zsh/osx.sh

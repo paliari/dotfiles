@@ -185,10 +185,13 @@ brew install direnv autoenv heroku-toolbelt
 heroku keys
 
 # node
+# https://gist.github.com/DanHerbert/9520689
 rm -rf /usr/local/lib/node_modules
 brew uninstall node
 brew install node --without-npm
 echo prefix=~/.node >> ~/.npmrc
+# aparece um erro mas funciona
+# https://plus.google.com/u/0/photos/albums/p5v7mgnbb8esjrlpvs6dccrjhmcalecnt?pid=6207733812250015266&oid=110653845623131711583
 curl -L https://www.npmjs.com/install.sh | sh
 
 # ......................................................................................................................

@@ -81,7 +81,7 @@
   default = matching
 
 [include]
-  path = /Users/neves/.gitconfig.user
+  path = ~/.gitconfig.user
 [merge]
 	tool = p4merge
 [mergetool]

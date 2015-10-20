@@ -172,6 +172,7 @@ open -a Spectacle
 # ......................................................................................................................
 
 brew install rbenv ruby-build openssl mysql
+ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents # Start mysql at login
 brew link --force openssl
 rbenv install 2.2.3
 rbenv global 2.2.3

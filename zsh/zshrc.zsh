@@ -2,6 +2,7 @@ ts=$(gdate +%s%3N) # medir o tempo para carregar este script. Precisa instalar b
 #-----------------------------------------------------------------------------------------------------------------------
 
 HERE=${0:a:h}
+DOTFILES=$(dirname $HERE)
 
 # choose oh-my-zsh or prezto, NEVER BOTH
 # source $HERE/oh-my-zsh-rc.zsh

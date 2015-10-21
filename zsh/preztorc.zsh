@@ -14,7 +14,11 @@ zstyle ':prezto:load' pmodule \
   'prompt' \
   'git'
 
-zstyle ':prezto:module:prompt' theme 'sorin'
+# zstyle ':prezto:module:prompt' theme 'sorin'
+# zstyle ':prezto:module:prompt' theme 'kylewest'
+# zstyle ':prezto:module:prompt' theme 'pure'
+# zstyle ':prezto:module:prompt' theme 'powerline'
+zstyle ':prezto:module:prompt' theme 'paradox'
 
 source $HOME/.zprezto/init.zsh
 

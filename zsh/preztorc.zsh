@@ -11,7 +11,8 @@ zstyle ':prezto:load' pmodule \
   'history' \
   'utility' \
   'editor' \
-  'prompt'
+  'prompt' \
+  'git'
 
 zstyle ':prezto:module:prompt' theme 'sorin'
 

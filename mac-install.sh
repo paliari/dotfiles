@@ -437,3 +437,7 @@ cp -r "/Volumes/DiffMerge 4.2.0.697 intel stable/DiffMerge.app" /Applications/
 hdiutil unmount /Volumes/DiffMerge*
 sudo ln -sf /Applications/DiffMerge.app/Contents/Resources/diffmerge.sh  /usr/bin/diffmerge
 rm DiffMerge*.dmg
+
+# install composer (https://getcomposer.org/doc/00-intro.md)
+curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/local/bin/composer

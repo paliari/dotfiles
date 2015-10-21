@@ -1,5 +1,5 @@
 [core]
-	excludesfile = /Users/neves/.gitignore
+  excludesfile = ~/.gitignore
   editor = subl -w
   eol = lf
 

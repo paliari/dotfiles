@@ -141,7 +141,7 @@ brew cask install qlprettypatch betterzipql suspicious-package
 #.......................................................................................................................
 
 # essential
-brew install ssh-copy-id sqlite3 entr coreutils the_silver_searcher # ag
+brew install ssh-copy-id sqlite3 entr fasd coreutils the_silver_searcher # ag
 
 # essential tools
 brew cask install google-chrome firefox evernote rowanj-gitx sourcetree sequel-pro lightpaper cheatsheet

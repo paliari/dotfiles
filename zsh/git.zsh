@@ -5,11 +5,11 @@ alias gd="git icdiff"
 alias gt="git status"
 
 # utilizar alias gs apenas se não estiver instalado o GhostScript
-unalias gs
+unalias gs &> /dev/null
 [[ $(which gs) ]] || alias gs="git status"
 
-unalias gc
+unalias gc &> /dev/null
 gc() { git commit -m "$*" && git status }
 
-unalias ga
+unalias ga &> /dev/null
 ga() { git add -A $* && git status }

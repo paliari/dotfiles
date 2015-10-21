@@ -180,7 +180,7 @@ echo 'gem: --no-ri --no-rdoc -V' > ~/.gemrc
 gem install bundler
 
 #git up
-sudo gem install git-up
+gem install git-up rails
 
 # auto rbenv rehash
 git clone https://github.com/sstephenson/rbenv-gem-rehash.git ~/.rbenv/plugins/rbenv-gem-rehash

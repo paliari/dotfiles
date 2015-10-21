@@ -1,5 +1,11 @@
 # homebrew
-export PATH="/usr/local/sbin:$PATH"
+PATH="/usr/local/sbin:$PATH"
+
+# node bin
+PATH="$HOME/.node/bin:$PATH"
+
+# dotfiles bin
+PATH="$HERE/bin:$PATH"
 
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
